@@ -3,23 +3,18 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah Martinez",
-    role: "Product Manager, TechCorp",
-    text: "Alex consistently delivered pixel-perfect implementations ahead of schedule. Their attention to accessibility and performance was exceptional.",
+    name: "Kris Barnes",
+    role: "Senior Technical Project Manager, Protiviti",
+    text: `Over the long duration of this
+project, he consistently stepped up to the challenge, both on QA and on content entry. He
+excelled in both roles, often going above and beyond what was asked or expected, learning and
+responding quickly to feedback, and proactively taking on additional tickets and tasks that he
+knew were needed in order for the team to be successful. He also led a large FPT team very
+successfully. I can confidently say that without his leadership, resilient dedication, team
+mentality, and extreme ownership of not only tasks but entire workstreams, that this project
+would not have been as successful.`,
     color: "bg-primary",
-  },
-  {
-    name: "James Wilson",
-    role: "CTO, StartupXYZ",
-    text: "One of the most talented developers I've worked with. They transformed our design system and reduced component inconsistencies by 90%.",
-    color: "bg-secondary",
-  },
-  {
-    name: "Emily Chen",
-    role: "Design Lead, Agency Co",
-    text: "Rare combination of technical expertise and design sensibility. Alex bridged the gap between our design and engineering teams beautifully.",
-    color: "bg-accent",
-  },
+  }
 ];
 
 const TestimonialsSection = () => {
@@ -39,7 +34,7 @@ const TestimonialsSection = () => {
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1">
         {testimonials.map((t, idx) => (
           <motion.blockquote
             key={t.name}

@@ -1,17 +1,19 @@
 import { motion } from "framer-motion";
+import { Cloud, Code, Database, Eye, Layers, PenTool, Terminal, Type, Zap } from "lucide-react";
 
 const skills = [
-  { name: "React / Next.js", level: 95, category: "Frontend" },
-  { name: "TypeScript", level: 90, category: "Frontend" },
-  { name: "Tailwind CSS", level: 92, category: "Frontend" },
-  { name: "Node.js", level: 85, category: "Backend" },
-  { name: "Python", level: 80, category: "Backend" },
-  { name: "PostgreSQL", level: 78, category: "Backend" },
-  { name: "Figma", level: 88, category: "Design" },
-  { name: "Motion Design", level: 75, category: "Design" },
+  { name: "React Native", category: "Mobile", icon: Layers },
+  { name: "Expo + Expo Push Notification", category: "Mobile", icon: Zap },
+  { name: "Firebase", category: "Mobile", icon: Cloud },
+  { name: "TypeScript",category: "Core", icon: Type },
+  { name: "JavaScript", category: "Core", icon: Code },
+  { name: "supabase", category: "Core", icon: Database },
+  { name: "Playwright", category: "Testing", icon: Terminal },
+  { name: "Web Accessibility",category: "Testing", icon: Eye },
+  { name: "Figma", category: "Design", icon: PenTool },
 ];
 
-const categories = ["Frontend", "Backend", "Design"];
+const categories = ["Mobile", "Core", "Testing", "Design"];
 
 const SkillsSection = () => {
   return (
@@ -48,18 +50,12 @@ const SkillsSection = () => {
                 .filter((s) => s.category === category)
                 .map((skill) => (
                   <div key={skill.name}>
-                    <div className="flex justify-between mb-1">
-                      <span className="font-heading font-semibold text-sm">{skill.name}</span>
-                      <span className="text-muted-foreground text-xs font-heading">{skill.level}%</span>
-                    </div>
-                    <div className="w-full h-3 border-[2px] border-border bg-background">
-                      <motion.div
-                        className="h-full bg-primary"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                      />
+                    <div className="flex justify-between mb-1 items-center">
+                      <span className="font-heading font-semibold text-sm flex items-center gap-2">
+                        <skill.icon size={14} className="text-primary" />
+                        {skill.name}
+                      </span>
+  
                     </div>
                   </div>
                 ))}

@@ -3,30 +3,78 @@ import { ExternalLink, Code } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack marketplace with real-time inventory, Stripe payments, and an admin dashboard.",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    title: "SD Chat",
+    description: "A secure mobile messaging app with end-to-end encryption, Supabase realtime sync, and push notifications.",
+    repoUrl: "https://github.com/phuocnguyen2201/sd-chat",
+    tags: [
+      "React Native",
+      "Expo",
+      "Supabase",
+      "Encryption",
+      "Realtime",
+      "Push Notifications",
+      "Auth",
+      "Secure Storage",
+      "AsyncStorage",
+      "Mobile UX",
+    ],
     color: "bg-primary/10",
     accent: "bg-primary",
   },
   {
-    title: "AI Writing Assistant",
-    description: "GPT-powered writing tool with collaborative editing, templates, and export to multiple formats.",
-    tags: ["Next.js", "OpenAI", "TypeScript", "Tailwind"],
+    title: "Accessibility View",
+    description: "A Figma plugin for WCAG contrast checks, color blindness simulation, and AI-assisted palette generation.",
+    repoUrl: "https://github.com/phuocnguyen2201/accessibility-view",
+    tags: [
+      "TypeScript",
+      "Figma Plugin",
+      "WCAG",
+      "Contrast Analysis",
+      "Color Blindness",
+      "AI Palette",
+      "Accessibility",
+      "Design System",
+      "Webpack",
+      "UI Tools",
+    ],
     color: "bg-secondary/10",
     accent: "bg-secondary",
   },
   {
-    title: "Health & Fitness Tracker",
-    description: "Mobile-first PWA for tracking workouts, nutrition, and progress with data visualizations.",
-    tags: ["React", "D3.js", "Firebase", "PWA"],
+    title: "Playwright Showcase",
+    description: "A compact test suite demonstrating E2E coverage for web apps, MFA flows, and accessibility checks.",
+    repoUrl: "https://github.com/phuocnguyen2201/playwright-showcase",
+    tags: [
+      "Playwright",
+      "E2E",
+      "Axe",
+      "TypeScript",
+      "MFA",
+      "Automated Tests",
+      "Browser",
+      "CI-ready",
+      "Accessibility",
+      "Test Suites",
+    ],
     color: "bg-accent/20",
     accent: "bg-accent",
   },
   {
-    title: "Design System Library",
-    description: "Comprehensive component library with 50+ accessible components, Storybook docs, and Figma kit.",
-    tags: ["TypeScript", "Storybook", "Figma", "A11y"],
+    title: "Financial Management",
+    description: "A bill scanner and expense tracker using OCR, Firebase, and visual analytics for spending insights.",
+    repoUrl: "https://github.com/phuocnguyen2201/financial-management",
+    tags: [
+      "React Native",
+      "OCR",
+      "Firebase",
+      "Analytics",
+      "Receipt Scanner",
+      "Expense Tracking",
+      "AsyncStorage",
+      "Data Visualizations",
+      "Mobile Finance",
+      "API Integration",
+    ],
     color: "bg-primary/10",
     accent: "bg-primary",
   },
@@ -45,7 +93,7 @@ const ProjectsSection = () => {
           Featured <span className="text-secondary">Projects</span>
         </h2>
         <p className="text-muted-foreground text-lg mb-12 max-w-lg">
-          A selection of projects I've built from concept to launch.
+          Four real-world repositories showcasing secure mobile apps, accessibility tooling, E2E testing, and intelligent finance workflows.
         </p>
       </motion.div>
 
@@ -72,12 +120,14 @@ const ProjectsSection = () => {
               ))}
             </div>
             <div className="flex gap-3">
-              <button className="brutal-btn text-xs border-[2px] px-3 py-1.5 bg-background text-foreground flex items-center gap-1.5">
-                <ExternalLink size={12} /> Live
-              </button>
-              <button className="brutal-btn text-xs border-[2px] px-3 py-1.5 bg-background text-foreground flex items-center gap-1.5">
-                <Code size={12} /> Code
-              </button>
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="brutal-btn text-xs border-[2px] px-3 py-1.5 bg-background text-foreground flex items-center gap-1.5"
+              >
+                <ExternalLink size={12} /> View Repo
+              </a>
             </div>
           </motion.article>
         ))}
