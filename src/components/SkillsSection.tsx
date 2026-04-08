@@ -11,9 +11,14 @@ const skills = [
   { name: "Playwright", category: "Testing", icon: Terminal },
   { name: "Web Accessibility",category: "Testing", icon: Eye },
   { name: "Figma", category: "Design", icon: PenTool },
+  { name: "Talent Assessment/ Talent Matching", category: "Personal", icon: PenTool },
+  { name: "Communication", category: "Personal", icon: PenTool },
+  { name: "Decision Making", category: "Personal", icon: PenTool },
+  { name: "Conflict Resolution", category: "Personal", icon: PenTool },
+  { name: "Composure", category: "Personal", icon: PenTool },
 ];
 
-const categories = ["Mobile", "Core", "Testing", "Design"];
+const categories = ["Mobile", "Core", "Personal", "Testing", "Design"];
 
 const SkillsSection = () => {
   return (

@@ -23,7 +23,7 @@ const HeroSection = () => {
             Hi, I'm{" "}
             <span className="brutal-underline">Bruce</span>
             <br />
-            <span className="text-primary">Ng</span>
+            <span className="text-primary">Nguyen</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-md mb-8 font-body">
             A quality-focused developer who loves to build digital experiences. 
@@ -47,7 +47,7 @@ const HeroSection = () => {
         >
           <div className="brutal-card bg-primary/10 max-w-[400px] ml-auto flex items-center justify-center">
             <div className="text-[120px] font-heading font-bold text-primary/30 select-none">
-              <img src={avatarImage} alt="Bruce Avatar" className="w-full h-full object-cover object-top" />
+              {<img src={avatarImage} alt="Bruce Avatar" className="w-full h-full object-cover object-top" />}
             </div>
             {/* Overlapping geometric shapes */}
             <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-accent border-[3px] border-border" style={{ boxShadow: 'var(--shadow-brutal)' }} />
