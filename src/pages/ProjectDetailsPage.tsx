@@ -16,6 +16,13 @@ const ProjectDetailsPage = () => {
     window.scrollTo(0, 0);
   }, [slug]);
 
+  // Update page title
+  useEffect(() => {
+    if (project) {
+      document.title = project.title;
+    }
+  }, [project]);
+
   if (!project) {
     return (
       <div className="w-full px-6 py-20 min-h-[80vh] flex items-center justify-center">

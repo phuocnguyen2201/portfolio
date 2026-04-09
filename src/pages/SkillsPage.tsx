@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Palette, Code, Layers, Zap } from "lucide-react";
 
 /* ── Interactive Color Mixer Demo ── */
@@ -223,6 +223,10 @@ const CaseStudy = () => {
 
 /* ── Skills Page ── */
 const SkillsPage = () => {
+  useEffect(() => {
+    document.title = "Skills lab";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />

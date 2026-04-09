@@ -12,6 +12,10 @@ const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Bruce's Portfolio";
+  }, []);
+
+  useEffect(() => {
     if (!location.hash) {
       return;
     }
