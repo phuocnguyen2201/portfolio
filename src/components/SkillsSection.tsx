@@ -47,7 +47,7 @@ const SkillsSection = () => {
             transition={{ duration: 0.4, delay: catIdx * 0.1 }}
             className="brutal-card"
           >
-            <div className="tag-badge bg-secondary text-secondary-foreground inline-block mb-6">
+            <div className="tag-badge bg-secondary text-secondary-foreground inline-block mb-6 md:text-lg text-black">
               {category}
             </div>
             <div className="space-y-5">

@@ -28,7 +28,7 @@ const Header = () => {
               to={item.path}
               className={`brutal-btn text-xs border-[2px] px-4 py-2 ${
                 location.pathname === item.path
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-primary text-primary-foreground text-black"
                   : "bg-background text-foreground hover:bg-muted"
               }`}
             >

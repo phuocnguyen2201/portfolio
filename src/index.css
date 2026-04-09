@@ -140,11 +140,11 @@
   }
 
   .brutal-btn-primary {
-    @apply brutal-btn bg-primary text-primary-foreground;
+    @apply brutal-btn bg-primary text-black;
   }
 
   .brutal-btn-secondary {
-    @apply brutal-btn bg-secondary text-secondary-foreground;
+    @apply brutal-btn bg-secondary text-black;
   }
 
   .brutal-btn-accent {
