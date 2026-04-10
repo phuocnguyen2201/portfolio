@@ -252,42 +252,54 @@ const TabOrderSection = () => {
 
   const goodOrder = (
     <div className="space-y-4">
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
-        <input className="brutal-btn border-[2px] px-4 py-2 bg-background flex-1" type="text" placeholder="First name" />
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<input type="text" placeholder="First name" />`}</code>
+      <div className="rounded border border-border bg-muted p-3">
+        <label className="flex flex-col gap-2">
+          <span className="font-semibold">First name</span>
+          <input className="brutal-btn border-[2px] px-4 py-2 bg-background w-full" type="text" placeholder="First name" />
+        </label>
+        <code className="text-sm text-muted-foreground block mt-3">{`<label><input type="text" placeholder="First name" /></label>`}</code>
       </div>
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
-        <input className="brutal-btn border-[2px] px-4 py-2 bg-background flex-1" type="text" placeholder="Last name" />
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<input type="text" placeholder="Last name" />`}</code>
+      <div className="rounded border border-border bg-muted p-3">
+        <label className="flex flex-col gap-2">
+          <span className="font-semibold">Last name</span>
+          <input className="brutal-btn border-[2px] px-4 py-2 bg-background w-full" type="text" placeholder="Last name" />
+        </label>
+        <code className="text-sm text-muted-foreground block mt-3">{`<label><input type="text" placeholder="Last name" /></label>`}</code>
       </div>
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
-        <button className="brutal-btn border-[2px] px-4 py-2">Submit</button>
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<button>Submit</button>`}</code>
+      <div className="rounded border border-border bg-muted p-3">
+        <button type="button" className="brutal-btn border-[2px] px-4 py-2">Submit</button>
+        <code className="text-sm text-muted-foreground block mt-3">{`<button type="button">Submit</button>`}</code>
       </div>
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
+      <div className="rounded border border-border bg-muted p-3">
         <a href="#top" className="brutal-btn border-[2px] px-4 py-2 inline-block">Back to top</a>
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<a href="#top">Back to top</a>`}</code>
+        <code className="text-sm text-muted-foreground block mt-3">{`<a href="#top">Back to top</a>`}</code>
       </div>
     </div>
   );
 
   const badOrder = (
     <div className="space-y-4">
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
-        <input className="brutal-btn border-[2px] px-4 py-2 bg-background flex-1" type="text" placeholder="First name" tabIndex={3} />
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<input type="text" placeholder="First name" tabindex="3" />`}</code>
+      <div className="rounded border border-border bg-muted p-3">
+        <label className="flex flex-col gap-2">
+          <span className="font-semibold">First name</span>
+          <input className="brutal-btn border-[2px] px-4 py-2 bg-background w-full" type="text" placeholder="First name" tabIndex={3} />
+        </label>
+        <code className="text-sm text-muted-foreground block mt-3">{`<label><input type="text" placeholder="First name" tabindex="3" /></label>`}</code>
       </div>
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
-        <input className="brutal-btn border-[2px] px-4 py-2 bg-background flex-1" type="text" placeholder="Last name" tabIndex={1} />
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<input type="text" placeholder="Last name" tabindex="1" />`}</code>
+      <div className="rounded border border-border bg-muted p-3">
+        <label className="flex flex-col gap-2">
+          <span className="font-semibold">Last name</span>
+          <input className="brutal-btn border-[2px] px-4 py-2 bg-background w-full" type="text" placeholder="Last name" tabIndex={1} />
+        </label>
+        <code className="text-sm text-muted-foreground block mt-3">{`<label><input type="text" placeholder="Last name" tabindex="1" /></label>`}</code>
       </div>
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
-        <button className="brutal-btn border-[2px] px-4 py-2" tabIndex={2}>Submit</button>
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<button tabindex="2">Submit</button>`}</code>
+      <div className="rounded border border-border bg-muted p-3">
+        <button type="button" className="brutal-btn border-[2px] px-4 py-2" tabIndex={2}>Submit</button>
+        <code className="text-sm text-muted-foreground block mt-3">{`<button type="button" tabindex="2">Submit</button>`}</code>
       </div>
-      <div className="flex items-center justify-between rounded border border-border bg-muted p-3 gap-4">
+      <div className="rounded border border-border bg-muted p-3">
         <a href="#top" className="brutal-btn border-[2px] px-4 py-2 inline-block" tabIndex={4}>Back to top</a>
-        <code className="text-sm text-muted-foreground whitespace-nowrap">{`<a href="#top" tabindex="4">Back to top</a>`}</code>
+        <code className="text-sm text-muted-foreground block mt-3">{`<a href="#top" tabindex="4">Back to top</a>`}</code>
       </div>
     </div>
   );
@@ -381,8 +393,9 @@ const ImageDescriptionSection = () => {
         Purely decorative images should have alt="" to be ignored by screen readers. Missing alt text results in generic announcements.
       </p>
 
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-wrap gap-4 mb-6" role="group" aria-label="Image description examples">
         <button
+          type="button"
           className="brutal-btn text-sm border-[2px] px-4 py-2"
           onClick={() => setActiveImage('informative')}
           aria-pressed={activeImage === 'informative'}
@@ -390,6 +403,7 @@ const ImageDescriptionSection = () => {
           Informative Image
         </button>
         <button
+          type="button"
           className="brutal-btn text-sm border-[2px] px-4 py-2"
           onClick={() => setActiveImage('decorative')}
           aria-pressed={activeImage === 'decorative'}
@@ -397,6 +411,7 @@ const ImageDescriptionSection = () => {
           Decorative Image
         </button>
         <button
+          type="button"
           className="brutal-btn text-sm border-[2px] px-4 py-2"
           onClick={() => setActiveImage('missing')}
           aria-pressed={activeImage === 'missing'}
@@ -405,16 +420,16 @@ const ImageDescriptionSection = () => {
         </button>
       </div>
 
-      <div className="brutal-card p-6 mb-6 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        <div>
+      <div className="brutal-card p-6 mb-6 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start">
+        <figure>
           <img
             src={currentImage.src}
             alt={currentImage.alt}
-            className="w-full max-w-md border-[2px] border-border mb-4 aspect-[3/2]"
+            className="w-full max-w-md border-[2px] border-border mb-4 aspect-[3/2] object-cover"
           />
-          <p className="font-semibold mb-2">{currentImage.description}</p>
+          <figcaption className="font-semibold mb-2">{currentImage.description}</figcaption>
           <p className="text-sm text-muted-foreground">Alt text: "{currentImage.alt || '(empty)'}"</p>
-        </div>
+        </figure>
         <div className="rounded border border-border bg-muted p-4">
           <p className="font-semibold mb-3">Markup Example</p>
           <code className="block whitespace-pre-wrap text-sm text-muted-foreground">

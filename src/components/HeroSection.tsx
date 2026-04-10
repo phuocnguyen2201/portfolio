@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section className="section-container relative overflow-hidden min-h-[90vh] flex items-center">
       {/* Geometric decorations */}
       <div className="geometric-circle w-32 h-32 bg-primary/20 -top-8 -right-8 animate-spin-slow" />
-      <div className="geometric-square w-20 h-20 bg-accent/30 top-40 right-20 rotate-12" />
+      <div className="hidden md:block geometric-square w-20 h-20 bg-accent/30 top-40 right-20 rotate-12" />
       <div className="geometric-circle w-16 h-16 bg-secondary/25 bottom-20 left-10 animate-bounce-subtle" />
       <div className="geometric-square w-12 h-12 bg-primary/15 bottom-40 right-40 -rotate-6" />
 
@@ -43,9 +43,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, rotate: -5 }}
           animate={{ opacity: 1, rotate: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative hidden md:block"
+          className="relative block mx-auto md:mx-0"
         >
-          <div className="brutal-card bg-primary/10 max-w-[400px] ml-auto flex items-center justify-center">
+          <div className="brutal-card bg-primary/10 max-w-[380px] mx-auto md:ml-auto flex items-center justify-center">
             <div className="text-[120px] font-heading font-bold text-primary/30 select-none">
               {<img src={avatarImage} alt="Bruce Avatar" className="w-full h-full object-cover object-top" />}
             </div>
