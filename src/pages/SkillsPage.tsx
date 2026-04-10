@@ -225,6 +225,7 @@ const CaseStudy = () => {
 const SkillsPage = () => {
   useEffect(() => {
     document.title = "Skills lab";
+    window.scrollTo(0, 0);
   }, []);
 
   return (
