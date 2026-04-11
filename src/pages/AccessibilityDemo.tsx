@@ -26,6 +26,7 @@ const AccessibilityDemo = () => {
           </header>
 
           <div className="space-y-16">
+            <HowScreenReaderWorksSection />
             <HeadingOrderSection />
             <ColorContrastSection />
             <TabOrderSection />
@@ -37,6 +38,52 @@ const AccessibilityDemo = () => {
     </div>
   );
 };
+
+const HowScreenReaderWorksSection = () => (
+  <section className="brutal-card">
+    <div className="tag-badge bg-accent text-accent-foreground inline-block mb-4">
+      Screen Reader Demo
+    </div>
+    <h2 className="font-heading text-3xl font-bold mb-4">How Screen Reader Work</h2>
+    <p className="text-muted-foreground mb-6">
+      Screen readers may announce the semantic role and the content in a different order depending on the implementation. The important part is that both pieces of <b className="text-lg">information are present: the semantic role and the visible content</b>.
+    </p>
+
+    <div className="grid gap-4 md:grid-cols-2 mb-4">
+      <div className="rounded border border-border bg-muted p-6">
+        <p className="font-semibold mb-3">Role then content</p>
+        <p className="text-lg">
+          <span className="font-semibold text-secondary">Role:</span>{' '}
+          <span className="text-secondary">button</span>{' '}
+          <span className="font-semibold text-accent">Content:</span>{' '}
+          <span className="text-accent">Submit</span>
+        </p>
+        <p className="text-lg mt-4">
+          <span className="font-semibold text-secondary">Role:</span>{' '}
+          <span className="text-secondary">heading level 2</span>{' '}
+          <span className="font-semibold text-accent">Content:</span>{' '}
+          <span className="text-accent">Section Two</span>
+        </p>
+      </div>
+
+      <div className="rounded border border-border bg-muted p-6">
+        <p className="font-semibold mb-3">Content then role</p>
+        <p className="text-lg">
+          <span className="font-semibold text-accent">Content:</span>{' '}
+          <span className="text-accent">Submit</span>{' '}
+          <span className="font-semibold text-secondary">Role:</span>{' '}
+          <span className="text-secondary">button</span>
+        </p>
+        <p className="text-lg mt-4">
+          <span className="font-semibold text-accent">Content:</span>{' '}
+          <span className="text-accent">Section Two</span>{' '}
+          <span className="font-semibold text-secondary">Role:</span>{' '}
+          <span className="text-secondary">heading level 2</span>
+        </p>
+      </div>
+    </div>
+  </section>
+);
 
 const HeadingOrderSection = () => {
   const [activeExample, setActiveExample] = React.useState('good');
@@ -92,8 +139,25 @@ const HeadingOrderSection = () => {
   );
 
   const screenReaderOutput = activeExample === 'good'
-    ? "Screen reader: 'Main Page Title, heading level 1. Section One, heading level 2. Subsection A, heading level 3. Section Two, heading level 2. Subsection B, heading level 3. Sub-subsection, heading level 4.'"
-    : "Screen reader: 'Main Page Title, heading level 1. Skipped to H3, heading level 3. Back to H2 (confusing), heading level 2.' (User may be confused by skipped levels)";
+    ? (
+      <>
+        <span className="text-accent">Screen reader:</span>{' '}
+        <span className="text-accent">Main Page Title</span>, <span className="text-secondary">heading level 1</span>.{' '}
+        <span className="text-accent">Section One</span>, <span className="text-secondary">heading level 2</span>.{' '}
+        <span className="text-accent">Subsection A</span>, <span className="text-secondary">heading level 3</span>.{' '}
+        <span className="text-accent">Section Two</span>, <span className="text-secondary">heading level 2</span>.{' '}
+        <span className="text-accent">Subsection B</span>, <span className="text-secondary">heading level 3</span>.{' '}
+        <span className="text-accent">Sub-subsection</span>, <span className="text-secondary">heading level 4</span>.
+      </>
+    ) : (
+      <>
+        <span className="text-accent">Screen reader:</span>{' '}
+        <span className="text-accent">Main Page Title</span>, <span className="text-secondary">heading level 1</span>.{' '}
+        <span className="text-accent">Skipped to H3</span>, <span className="text-secondary">heading level 3</span>.{' '}
+        <span className="text-accent">Back to H2 (confusing)</span>, <span className="text-secondary">heading level 2</span>.{' '}
+        <span className="text-secondary">(User may be confused by skipped levels)</span>
+      </>
+    );
 
   return (
     <section className="brutal-card">
@@ -135,7 +199,7 @@ const HeadingOrderSection = () => {
 
       <div className="bg-muted p-4 border-[2px] border-border">
         <strong>Screen Reader Output:</strong><br />
-        <code className="text-sm">{screenReaderOutput}</code>
+        <p className="text-lg leading-relaxed">{screenReaderOutput}</p>
       </div>
     </section>
   );
@@ -305,8 +369,24 @@ const TabOrderSection = () => {
   );
 
   const screenReaderOutput = demoType === 'good'
-    ? "Screen reader focus order: 'First name, edit text. Last name, edit text. Submit, button. Back to top, link.'"
-    : "Screen reader focus order: 'Last name, edit text. Submit, button. First name, edit text. Back to top, link.' (Confusing order due to tabindex values)";
+    ? (
+      <>
+        <span className="text-accent">Screen reader focus order:</span>{' '}
+        <span className="text-accent">First name</span>, <span className="text-secondary">edit text</span>.{' '}
+        <span className="text-accent">Last name</span>, <span className="text-secondary">edit text</span>.{' '}
+        <span className="text-accent">Submit</span>, <span className="text-secondary">button</span>.{' '}
+        <span className="text-accent">Back to top</span>, <span className="text-secondary">link</span>.
+      </>
+    ) : (
+      <>
+        <span className="text-accent">Screen reader focus order:</span>{' '}
+        <span className="text-accent">Last name</span>, <span className="text-secondary">edit text</span>.{' '}
+        <span className="text-accent">Submit</span>, <span className="text-secondary">button</span>.{' '}
+        <span className="text-accent">First name</span>, <span className="text-secondary">edit text</span>.{' '}
+        <span className="text-accent">Back to top</span>, <span className="text-secondary">link</span>.{' '}
+        <span className="text-secondary">(Confusing order due to tabindex values)</span>
+      </>
+    );
 
   return (
     <section className="brutal-card">
@@ -343,7 +423,7 @@ const TabOrderSection = () => {
 
       <div className="bg-muted p-4 border-[2px] border-border">
         <strong>Screen Reader Focus Order:</strong><br />
-        <code className="text-sm">{screenReaderOutput}</code>
+        <p className="text-lg leading-relaxed">{screenReaderOutput}</p>
       </div>
 
       <p className="text-sm text-muted-foreground mt-4">
@@ -377,10 +457,25 @@ const ImageDescriptionSection = () => {
 
   const currentImage = images[activeImage as keyof typeof images];
   const screenReaderOutput = activeImage === 'informative'
-    ? `Screen reader: "Layered square icon representing stacked content or components, image"`
-    : activeImage === 'decorative'
-    ? `Screen reader: (Image ignored - no announcement)`
-    : `Screen reader: "Team Photo, image" (Generic announcement, user gets no useful information)`;
+    ? (
+      <>
+        <span className="text-accent">Screen reader:</span>{' '}
+        <span className="text-accent">Layered square icon representing stacked content or components</span>,{' '}
+        <span className="text-secondary">image</span>
+      </>
+    ) : activeImage === 'decorative'
+    ? (
+      <>
+        <span className="text-accent">Screen reader:</span>{' '}
+        <span className="text-secondary">(Image ignored - no announcement)</span>
+      </>
+    ) : (
+      <>
+        <span className="text-accent">Screen reader:</span>{' '}
+        <span className="text-accent">Team Photo</span>, <span className="text-secondary">image</span>{' '}
+        <span className="text-secondary">(Generic announcement, user gets no useful information)</span>
+      </>
+    );
 
   return (
     <section className="brutal-card">
@@ -442,7 +537,7 @@ const ImageDescriptionSection = () => {
 
       <div className="bg-muted p-4 border-[2px] border-border">
         <strong>Screen Reader Output:</strong><br />
-        <code className="text-sm">{screenReaderOutput}</code>
+        <p className="text-lg leading-relaxed">{screenReaderOutput}</p>
       </div>
       
     </section>
