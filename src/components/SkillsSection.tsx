@@ -1,24 +1,52 @@
 import { motion } from "framer-motion";
-import { Cloud, Code, Database, Eye, Layers, PenTool, Terminal, Type, Zap } from "lucide-react";
+import { Cloud, Code, Database, Eye, Layers, PenTool, Terminal, Type, Users, Zap } from "lucide-react";
 
 const skills = [
-  { name: "React Native", category: "Mobile", icon: Layers },
-  { name: "Expo + Expo Push Notification", category: "Mobile", icon: Zap },
-  { name: "Firebase", category: "Mobile", icon: Cloud },
-  { name: "TypeScript",category: "Core", icon: Type },
-  { name: "JavaScript", category: "Core", icon: Code },
-  { name: "supabase", category: "Core", icon: Database },
-  { name: "Playwright", category: "Testing", icon: Terminal },
-  { name: "Web Accessibility",category: "Testing", icon: Eye },
-  { name: "Figma", category: "Design", icon: PenTool },
-  { name: "Talent Assessment/ Talent Matching", category: "Personal", icon: PenTool },
-  { name: "Communication", category: "Personal", icon: PenTool },
-  { name: "Decision Making", category: "Personal", icon: PenTool },
-  { name: "Conflict Resolution", category: "Personal", icon: PenTool },
-  { name: "Composure", category: "Personal", icon: PenTool },
-];
+  { "name": "React Native", "category": "Mobile", "icon": Layers },
+  { "name": "Expo + Expo Push Notification", "category": "Mobile", "icon": Zap },
+  { "name": "Firebase", "category": "Mobile", "icon": Cloud },
+  { "name": "Gluestack UI", "category": "Mobile", "icon": Layers },
 
-const categories = ["Mobile", "Core", "Personal", "Testing", "Design"];
+  { "name": "TypeScript", "category": "Core", "icon": Type },
+  { "name": "JavaScript", "category": "Core", "icon": Code },
+  { "name": "Python", "category": "Core", "icon": Code },
+  { "name": "Java", "category": "Core", "icon": Code },
+  { "name": "Supabase", "category": "Core", "icon": Database },
+  { "name": "AWS Lambda", "category": "Core", "icon": Cloud },
+  { "name": "Vercel", "category": "Core", "icon": Cloud },
+  { "name": "CI/CD (GitHub Actions)", "category": "Core", "icon": Terminal },
+
+  { "name": "Playwright", "category": "Testing", "icon": Terminal },
+  { "name": "Jest", "category": "Testing", "icon": Terminal },
+  { "name": "Robot Framework", "category": "Testing", "icon": Terminal },
+  { "name": "Appium", "category": "Testing", "icon": Terminal },
+  { "name": "UI/UX Testing", "category": "Testing", "icon": Eye },
+  { "name": "Regression Testing", "category": "Testing", "icon": Eye },
+  { "name": "Exploratory Testing", "category": "Testing", "icon": Eye },
+  { "name": "Accessibility Testing", "category": "Testing", "icon": Eye },
+  { "name": "Web Accessibility", "category": "Testing", "icon": Eye },
+  { "name": "ADA & WCAG Compliance", "category": "Testing", "icon": Eye },
+
+  { "name": "Figma", "category": "Design", "icon": PenTool },
+  { "name": "Adobe Experience Manager (AEM)", "category": "Design", "icon": PenTool },
+
+  { "name": "Agile Scrum", "category": "Project", "icon": Users },
+  { "name": "Sprint Planning", "category": "Project", "icon": Users },
+  { "name": "Retrospectives", "category": "Project", "icon": Users },
+  { "name": "Backlog Grooming", "category": "Project", "icon": Users },
+  { "name": "QA Leadership", "category": "Project", "icon": Users },
+  { "name": "Team Coaching", "category": "Project", "icon": Users },
+  { "name": "Cross-functional Collaboration", "category": "Project", "icon": Users },
+
+  { "name": "Talent Assessment / Talent Matching", "category": "Personal", "icon": PenTool },
+  { "name": "Communication", "category": "Personal", "icon": PenTool },
+  { "name": "Decision Making", "category": "Personal", "icon": PenTool },
+  { "name": "Conflict Resolution", "category": "Personal", "icon": PenTool },
+  { "name": "Composure", "category": "Personal", "icon": PenTool }
+]
+
+
+const categories = ["Mobile", "Core", "Personal", "Project", "Testing", "Design"];
 
 const SkillsSection = () => {
   return (

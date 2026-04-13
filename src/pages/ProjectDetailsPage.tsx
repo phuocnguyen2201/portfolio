@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useEffect } from "react";
 import { projects } from "../components/ProjectsSection";
 import { useTheme } from "../hooks/use-theme";
+import Footer from "../components/Footer";
 
 const ProjectDetailsPage = () => {
   useTheme();
@@ -39,8 +40,8 @@ const ProjectDetailsPage = () => {
   return (
     <div className="max-h-screen bg-background">
       {/* Header */}
-      <div className={`${project.color} border-b-[3px] border-border py-12`}>
-        <div className="w-full px-6 py-20">
+      <div className={`${project.color} border-b-[3px] border-border py-0 md:py-12`}>
+        <div className="w-full px-6 py-8">
           <button
             onClick={() => navigate("/#projects")}
             className="brutal-btn text-sm border-[2px] px-3 py-1.5 mb-6 inline-flex items-center gap-2 bg-background text-foreground"
@@ -58,7 +59,7 @@ const ProjectDetailsPage = () => {
       </div>
 
       {/* Main Content */}
-      <section className="w-full px-6 py-20">
+      <section className="w-full px-6 py-10">
         <div className="max-w-4xl mx-auto">
                       {/* Overview Section */}
           <motion.div
@@ -206,6 +207,7 @@ const ProjectDetailsPage = () => {
         </div>
          </div>
       </section>
+      <Footer />
     </div>
    
   );
