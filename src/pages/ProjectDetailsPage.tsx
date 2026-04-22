@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useEffect } from "react";
 import { projects } from "../components/ProjectsSection";
-import { useTheme } from "../hooks/use-theme";
+import { useTheme } from "../context/useTheme";
 import Footer from "../components/Footer";
 
 const ProjectDetailsPage = () => {

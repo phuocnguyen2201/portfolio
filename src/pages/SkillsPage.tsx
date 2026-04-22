@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Palette, Code, Layers, Zap } from "lucide-react";
+import { useTheme } from "../context/useTheme";
 
 /* ── Interactive Color Mixer Demo ── */
 const ColorMixer = () => {
@@ -15,7 +16,7 @@ const ColorMixer = () => {
 
   return (
     <div className="brutal-card">
-      <div className="tag-badge bg-primary text-primary-foreground inline-block mb-4">
+      <div className="tag-badge bg-primary text-black text-lg inline-block mb-4">
         Interactive Demo
       </div>
       <h3 className="font-heading text-xl font-bold mb-4 flex items-center gap-2">
@@ -40,10 +41,12 @@ const ColorMixer = () => {
         ].map(({ label, value, set, max }) => (
           <div key={label}>
             <div className="flex justify-between mb-1">
-              <label className="font-heading font-semibold text-sm">{label}</label>
+              <label htmlFor={`slider-${label.toLowerCase()}`} className="font-heading font-semibold text-sm">{label}</label>
               <span className="text-muted-foreground text-xs font-heading">{value}</span>
             </div>
+            <label htmlFor={`slider-mixer-${label.toLowerCase()}`} className="sr-only">Color Mixer</label>
             <input
+              id={`slider-mixer-${label.toLowerCase()}`}
               type="range"
               min={0}
               max={max}
@@ -65,14 +68,14 @@ const ComponentBuilder = () => {
   const [bgColor, setBgColor] = useState<"primary" | "secondary" | "accent">("primary");
 
   const bgMap = {
-    primary: "bg-primary text-primary-foreground",
-    secondary: "bg-secondary text-secondary-foreground",
+    primary: "bg-primary text-black",
+    secondary: "bg-secondary text-black",
     accent: "bg-accent text-accent-foreground",
   };
 
   return (
     <div className="brutal-card">
-      <div className="tag-badge bg-secondary text-secondary-foreground inline-block mb-4">
+      <div className="tag-badge bg-secondary text-black text-lg inline-block mb-4">
         Interactive Demo
       </div>
       <h3 className="font-heading text-xl font-bold mb-4 flex items-center gap-2">
@@ -96,12 +99,14 @@ const ComponentBuilder = () => {
 
       <div className="space-y-4">
         <div>
-          <label className="font-heading font-semibold text-sm mb-1 block">Border: {borderWidth}px</label>
-          <input type="range" min={0} max={8} value={borderWidth} onChange={(e) => setBorderWidth(Number(e.target.value))} className="w-full h-3 appearance-none border-[2px] border-border bg-muted cursor-pointer accent-primary" />
+          <label htmlFor="slider-border" className="font-heading font-semibold text-sm mb-1 block">Border: {borderWidth}px</label>
+          <label htmlFor="slider-border" className="sr-only">border slider</label>
+          <input id="slider-border" type="range" min={0} max={8} value={borderWidth} onChange={(e) => setBorderWidth(Number(e.target.value))} className="w-full h-3 appearance-none border-[2px] border-border bg-muted cursor-pointer accent-primary" />
         </div>
         <div>
-          <label className="font-heading font-semibold text-sm mb-1 block">Shadow: {shadowOffset}px</label>
-          <input type="range" min={0} max={12} value={shadowOffset} onChange={(e) => setShadowOffset(Number(e.target.value))} className="w-full h-3 appearance-none border-[2px] border-border bg-muted cursor-pointer accent-primary" />
+          <label htmlFor="slider-shadow" className="font-heading font-semibold text-sm mb-1 block">Shadow: {shadowOffset}px</label>
+          <label htmlFor="slider-shadow" className="sr-only">shadow slider</label>
+          <input id="slider-shadow" type="range" min={0} max={12} value={shadowOffset} onChange={(e) => setShadowOffset(Number(e.target.value))} className="w-full h-3 appearance-none border-[2px] border-border bg-muted cursor-pointer accent-primary" />
         </div>
         <div>
           <label className="font-heading font-semibold text-sm mb-2 block">Color</label>
@@ -135,7 +140,7 @@ const AnimationPlayground = () => {
 
   return (
     <div className="brutal-card">
-      <div className="tag-badge bg-accent text-accent-foreground inline-block mb-4">
+      <div className="tag-badge bg-accent text-lg text-black inline-block mb-4">
         Interactive Demo
       </div>
       <h3 className="font-heading text-xl font-bold mb-4 flex items-center gap-2">
@@ -160,7 +165,7 @@ const AnimationPlayground = () => {
             key={a}
             onClick={() => setAnimType(a)}
             className={`brutal-btn text-xs border-[2px] px-3 py-1.5 capitalize ${
-              animType === a ? "bg-primary text-primary-foreground" : "bg-background text-foreground"
+              animType === a ? "bg-primary text-black" : "bg-background text-foreground"
             }`}
           >
             {a}
@@ -180,7 +185,7 @@ const CaseStudy = () => {
       viewport={{ once: true }}
       className="brutal-card"
     >
-      <div className="tag-badge bg-primary text-primary-foreground inline-block mb-4">
+      <div className="tag-badge bg-primary text-black text-lg inline-block mb-4">
         Case Study
       </div>
       <h3 className="font-heading text-2xl font-bold mb-3 flex items-center gap-2">
@@ -223,6 +228,7 @@ const CaseStudy = () => {
 
 /* ── Skills Page ── */
 const SkillsPage = () => {
+  const { isDark } = useTheme();
   useEffect(() => {
     document.title = "Skills lab";
     window.scrollTo(0, 0);
@@ -243,7 +249,7 @@ const SkillsPage = () => {
               Hands-on
             </div>
             <h1 className="font-heading text-5xl md:text-6xl font-bold mb-4">
-              Skills <span className="text-primary">Lab</span>
+              Skills <span className={`${isDark ? 'text-primary' : 'text-secondary'} transition-colors duration-300`}>Lab</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl">
               Interactive demos and case studies that show — not just tell — what I can do.

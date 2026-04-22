@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Cloud, Code, Database, Eye, Layers, PenTool, Terminal, Type, Users, Zap } from "lucide-react";
-
+import { useTheme } from "../context/useTheme";
 const skills = [
   { "name": "React Native", "category": "Mobile", "icon": Layers },
   { "name": "Expo + Expo Push Notification", "category": "Mobile", "icon": Zap },
@@ -49,6 +49,7 @@ const skills = [
 const categories = ["Mobile", "Core", "Personal", "Project", "Testing", "Design"];
 
 const SkillsSection = () => {
+  const { isDark } = useTheme();
   return (
     <section className="section-container bg-muted/50" id="skills">
       <motion.div
@@ -58,7 +59,7 @@ const SkillsSection = () => {
         transition={{ duration: 0.5 }}
       >
         <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-          Skills & <span className="text-primary">Expertise</span>
+          Skills & <span className={`${isDark ? 'text-primary' : 'text-secondary'} transition-colors duration-300`}>Expertise</span>
         </h2>
         <p className="text-muted-foreground text-lg mb-12 max-w-lg">
           Technologies and tools I use to bring ideas to life.
@@ -75,7 +76,7 @@ const SkillsSection = () => {
             transition={{ duration: 0.4, delay: catIdx * 0.1 }}
             className="brutal-card"
           >
-            <div className="tag-badge bg-secondary text-secondary-foreground inline-block mb-6 md:text-lg text-black">
+            <div className="tag-badge bg-secondary inline-block mb-6 md:text-lg text-black">
               {category}
             </div>
             <div className="space-y-5">

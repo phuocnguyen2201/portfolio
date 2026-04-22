@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import avatarImage from "../assets/avatar/Bruce_Ng_1.jpg";
+import { useTheme } from "../context/useTheme";
+
 
 const HeroSection = () => {
+    const { isDark } = useTheme();
+
   return (
     <section className="section-container relative overflow-hidden min-h-[90vh] flex items-center">
       {/* Geometric decorations */}
@@ -23,7 +27,7 @@ const HeroSection = () => {
             Hi, I'm{" "}
             <span className="brutal-underline">Bruce</span>
             <br />
-            <span className="text-primary">Nguyen</span>
+            <span className={`${isDark ? 'text-primary' : 'text-secondary'} transition-colors duration-300`}>Nguyen</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-md mb-8 font-body">
             A quality-focused developer who loves to build digital experiences. 

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "../hooks/use-theme";
+import { useTheme } from "../context/useTheme";
 import { useState } from "react";
 
 const Header = () => {
@@ -29,7 +29,7 @@ const Header = () => {
               to={item.path}
               className={`brutal-btn text-xs border-[2px] px-4 py-2 ${
                 location.pathname === item.path
-                  ? "bg-primary text-primary-foreground text-black"
+                  ? "bg-accent text-black"
                   : "bg-background text-foreground hover:bg-muted"
               }`}
             >
@@ -38,7 +38,7 @@ const Header = () => {
           ))}
           <button
             onClick={toggle}
-            className="brutal-btn border-[2px] px-3 py-2 bg-accent text-accent-foreground ml-2"
+            className="brutal-btn border-[2px] px-3 py-2 bg-primary text-accent-foreground ml-2"
             aria-label="Toggle theme"
           >
             {isDark ? <Sun size={16} /> : <Moon size={16} />}

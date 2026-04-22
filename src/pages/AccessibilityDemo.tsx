@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import heroImage from "../assets/hero.png";
+import { useTheme } from "../context/useTheme";
 
 const AccessibilityDemo = () => {
+  const { isDark } = useTheme();
   useEffect(() => {
     document.title = "Accessibility Demo";
     window.scrollTo(0, 0);
@@ -16,7 +18,7 @@ const AccessibilityDemo = () => {
         <div className="max-w-6xl mx-auto px-6 py-20">
           <header className="text-center mb-16">
             <h1 className="font-heading text-5xl md:text-6xl font-bold mb-4">
-              WCAG 2.1 <span className="text-primary">Accessibility</span> Demo
+              WCAG 2.1 <span className={`${isDark ? 'text-primary' : 'text-secondary'} transition-colors duration-300`}>Accessibility</span> Demo
             </h1>
             <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               This interactive demo showcases four essential accessibility practices from WCAG 2.1 guidelines.
@@ -41,7 +43,7 @@ const AccessibilityDemo = () => {
 
 const HowScreenReaderWorksSection = () => (
   <section className="brutal-card">
-    <div className="tag-badge bg-accent text-accent-foreground inline-block mb-4">
+    <div className="tag-badge bg-accent text-accent-foreground text-lg inline-block mb-4">
       Screen Reader Demo
     </div>
     <h2 className="font-heading text-3xl font-bold mb-4">How Screen Reader Work</h2>
@@ -162,7 +164,7 @@ const HeadingOrderSection = () => {
   return (
     <section className="brutal-card">
         
-      <div className="tag-badge bg-primary text-primary-foreground inline-block mb-4">
+      <div className="tag-badge bg-primary text-black text-lg inline-block mb-4">
         Practice 1
       </div>
       <h2 className="font-heading text-3xl font-bold mb-4">Heading Order</h2>
@@ -253,7 +255,7 @@ const ColorContrastSection = () => {
 
   return (
     <section className="brutal-card">
-      <div className="tag-badge bg-secondary text-secondary-foreground inline-block mb-4">
+      <div className="tag-badge bg-secondary text-lg text-black inline-block mb-4">
         Practice 2
       </div>
       <h2 className="font-heading text-3xl font-bold mb-4">Color Contrast</h2>
@@ -390,7 +392,7 @@ const TabOrderSection = () => {
 
   return (
     <section className="brutal-card">
-      <div className="tag-badge bg-accent text-accent-foreground inline-block mb-4">
+      <div className="tag-badge bg-accent text-lg text-black inline-block mb-4">
         Practice 3
       </div>
       <h2 className="font-heading text-3xl font-bold mb-4">Tab Order (Keyboard Navigation)</h2>
@@ -479,7 +481,7 @@ const ImageDescriptionSection = () => {
 
   return (
     <section className="brutal-card">
-      <div className="tag-badge bg-primary text-primary-foreground inline-block mb-4">
+      <div className="tag-badge bg-primary text-black text-lg inline-block mb-4">
         Practice 4
       </div>
       <h2 className="font-heading text-3xl font-bold mb-4">Image Description (Alt Text)</h2>
