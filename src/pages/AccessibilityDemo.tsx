@@ -264,21 +264,25 @@ const ColorContrastSection = () => {
         and 3:1 for large text (≥18pt). Poor contrast makes content unreadable for users with visual impairments.
       </p>
 
-      <div className="flex gap-4 mb-6">
-        <button
-          className="brutal-btn text-sm border-[2px] px-4 py-2"
-          onClick={() => setTextSize('small')}
-          aria-pressed={textSize === 'small'}
-        >
-          Small Text Examples
-        </button>
-        <button
-          className="brutal-btn text-sm border-[2px] px-4 py-2"
-          onClick={() => setTextSize('large')}
-          aria-pressed={textSize === 'large'}
-        >
-          Large Text Examples
-        </button>
+      <div className="grid md:grid-cols-2 gap-6 mb-6">
+        <div className="flex gap-4">
+          <button
+            className="brutal-btn text-sm border-[2px] px-4 py-2"
+            onClick={() => setTextSize('small')}
+            aria-pressed={textSize === 'small'}
+          >
+            Small Text Examples
+          </button>
+          <button
+            className="brutal-btn text-sm border-[2px] px-4 py-2"
+            onClick={() => setTextSize('large')}
+            aria-pressed={textSize === 'large'}
+          >
+            Large Text Examples
+          </button>
+        </div>
+
+        <div className="flex gap-4"> This example will show-up in accessibility scan tool.</div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">

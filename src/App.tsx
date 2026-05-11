@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound'
 import SkillsPage from './pages/SkillsPage'
 import Index from './pages/Index'
 import ProjectDetailsPage from './pages/ProjectDetailsPage'
+import ProjectsPage from './pages/ProjectsPage'
 import AccessibilityDemo from './pages/AccessibilityDemo'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/portfolio" element={<Index />} />
+            <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/accessibility" element={<AccessibilityDemo />} />
             <Route path="/project/:slug" element={<ProjectDetailsPage />} />

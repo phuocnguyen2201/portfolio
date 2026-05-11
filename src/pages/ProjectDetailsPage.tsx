@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useEffect } from "react";
-import { projects } from "../components/ProjectsSection";
+import { projects } from "../data/projects";
 import { useTheme } from "../context/useTheme";
 import Footer from "../components/Footer";
 
@@ -10,8 +10,11 @@ const ProjectDetailsPage = () => {
   useTheme();
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   
   const project = projects.find(p => p.slug === slug);
+  const referrer = (location.state as any)?.referrer || "home";
+  
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,14 +27,25 @@ const ProjectDetailsPage = () => {
     }
   }, [project]);
 
+  const handleGoBack = () => {
+    if (referrer === "projects") {
+      navigate("/projects");
+    } else {
+      navigate("/#projects");
+    }
+  };
+
   if (!project) {
     return (
       <div className="w-full px-6 py-20 min-h-[80vh] flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-heading text-3xl font-bold mb-4">Project Not Found</h1>
-          <Link to="/#projects" className="brutal-btn text-sm border-[2px] px-4 py-2 inline-flex items-center gap-2">
-            <ArrowLeft size={14} /> Back to Projects
-          </Link>
+          <button 
+            onClick={handleGoBack}
+            className="brutal-btn text-sm border-[2px] px-4 py-2 inline-flex items-center gap-2"
+          >
+            <ArrowLeft size={14} /> Back
+          </button>
         </div>
       </div>
     );
@@ -43,7 +57,7 @@ const ProjectDetailsPage = () => {
       <div className={`${project.color} border-b-[3px] border-border py-0 md:py-12`}>
         <div className="w-full px-6 py-8">
           <button
-            onClick={() => navigate("/#projects")}
+            onClick={handleGoBack}
             className="brutal-btn text-sm border-[2px] px-3 py-1.5 mb-6 inline-flex items-center gap-2 bg-background text-foreground"
           >
             <ArrowLeft size={14} /> Back
