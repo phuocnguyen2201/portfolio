@@ -21,7 +21,9 @@ const ProjectsPage = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedType, setSelectedType] = useState("all");
   const [tagsDropdownOpen, setTagsDropdownOpen] = useState(false);
+  const [typeDropdownOpen, setTypeDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const typeDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.title = "Projects";
@@ -36,6 +38,12 @@ const ProjectsPage = () => {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setTagsDropdownOpen(false);
+      }
+      if (
+        typeDropdownRef.current &&
+        !typeDropdownRef.current.contains(event.target as Node)
+      ) {
+        setTypeDropdownOpen(false);
       }
     };
 
@@ -133,21 +141,67 @@ const ProjectsPage = () => {
             <div className="grid md:grid-cols-2 gap-4 mb-8">
               {/* Type Filter */}
               <div>
-                <label id='type-filter' className="text-sm font-heading font-bold mb-2 block">
+                <label className="text-sm font-heading font-bold mb-2 block">
                   Filter by Type
                 </label>
-                <select
-                aria-labelledby="type-filter"
-                  value={selectedType}
-                  onChange={(e) => setSelectedType(e.target.value)}
-                  className="w-full px-4 py-2 border-[2px] border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-primary appearance-none cursor-pointer"
-                >
-                  {projectTypes.map((type) => (
-                    <option key={type.value} value={type.value}>
-                      {type.label}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative" ref={typeDropdownRef}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={typeDropdownOpen}
+                    aria-haspopup="listbox"
+                    aria-controls="type-dropdown"
+                    onClick={() => setTypeDropdownOpen(!typeDropdownOpen)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setTypeDropdownOpen(!typeDropdownOpen);
+                      }
+                    }}
+                    className="w-full px-4 py-2 border-[2px] border-border rounded-lg bg-background text-foreground text-left flex items-center justify-between focus:outline-none focus:border-primary cursor-pointer"
+                  >
+                    <span className="text-sm">
+                      {projectTypes.find(type => type.value === selectedType)?.label}
+                    </span>
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${
+                        typeDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+
+                  {typeDropdownOpen && (
+                    <div
+                      id="type-dropdown"
+                      role="listbox"
+                      className="absolute top-full left-0 right-0 mt-1 bg-background border-[2px] border-border rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto"
+                    >
+                      {projectTypes.map((type) => (
+                        <div
+                          key={type.value}
+                          role="option"
+                          aria-selected={selectedType === type.value}
+                          onClick={() => {
+                            setSelectedType(type.value);
+                            setTypeDropdownOpen(false);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              setSelectedType(type.value);
+                              setTypeDropdownOpen(false);
+                            }
+                          }}
+                          tabIndex={0}
+                          className="px-4 py-2 hover:bg-muted cursor-pointer border-b border-border last:border-b-0 text-sm"
+                        >
+                          {type.label}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Tags Filter */}
@@ -156,9 +210,20 @@ const ProjectsPage = () => {
                   Filter by Tags
                 </label>
                 <div className="relative" ref={dropdownRef}>
-                  <button
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={tagsDropdownOpen}
+                    aria-haspopup="listbox"
+                    aria-controls="tags-dropdown"
                     onClick={() => setTagsDropdownOpen(!tagsDropdownOpen)}
-                    className="w-full px-4 py-2 border-[2px] border-border rounded-lg bg-background text-foreground text-left flex items-center justify-between focus:outline-none focus:border-primary"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setTagsDropdownOpen(!tagsDropdownOpen);
+                      }
+                    }}
+                    className="w-full px-4 py-2 border-[2px] border-border rounded-lg bg-background text-foreground text-left flex items-center justify-between focus:outline-none focus:border-primary cursor-pointer"
                   >
                     <span className="text-sm">
                       {selectedTags.length === 0
@@ -171,13 +236,20 @@ const ProjectsPage = () => {
                         tagsDropdownOpen ? "rotate-180" : ""
                       }`}
                     />
-                  </button>
+                  </div>
 
                   {tagsDropdownOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-1 bg-background border-[2px] border-border rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
+                    <div
+                      id="tags-dropdown"
+                      role="listbox"
+                      aria-multiselectable="true"
+                      className="absolute top-full left-0 right-0 mt-1 bg-background border-[2px] border-border rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto"
+                    >
                       {allTags.map((tag) => (
                         <label
                           key={tag}
+                          role="option"
+                          aria-selected={selectedTags.includes(tag)}
                           className="flex items-center gap-2 px-4 py-2 hover:bg-muted cursor-pointer border-b border-border last:border-b-0"
                         >
                           <input
