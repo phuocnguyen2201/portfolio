@@ -1,7 +1,8 @@
 export interface Project {
   slug: string;
   title: string;
-  type: "mobile" | "web" | "ai" | "others";
+  type: "mobile" | "web" | "ai" | "experience" | "others";
+  featured: boolean;
   description: string;
   details: string;
   repoUrl: string;
@@ -16,6 +17,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "sd-chat",
+    featured: true,
     title: "SD Chat",
     type: "mobile",
     description: "A secure mobile messaging app with end-to-end encryption, Supabase realtime sync, and push notifications.",
@@ -45,6 +47,7 @@ export const projects: Project[] = [
   },
   {
     slug: "accessibility-view",
+    featured: true,
     type: "web",
     title: "Accessibility View",
     description: "A Figma plugin for WCAG contrast checks, color blindness simulation, and AI-assisted palette generation.",
@@ -73,6 +76,7 @@ export const projects: Project[] = [
   },
   {
     slug: "playwright-showcase",
+    featured: true,
     type: "web",
     title: "Playwright Showcase",
     description: "A compact test suite demonstrating E2E coverage for web apps, MFA flows, and accessibility checks.",
@@ -99,6 +103,7 @@ export const projects: Project[] = [
   {
     type: "mobile",
     slug: "financial-management",
+    featured: true,
     title: "Financial Management",
     description: "A bill scanner and expense tracker using OCR, Firebase, and visual analytics for spending insights.",
     details: "Financial Management is a React Native app that helps users track their expenses by scanning receipts using OCR technology. The app utilizes Tesseract OCR to extract text from receipt images, allowing users to quickly log their expenses without manual entry. Data is stored and synchronized in real-time using Firebase Realtime Database, ensuring that users can access their financial information across devices. The app also features visual analytics powered by Victory Charts, providing users with insights into their spending habits through interactive graphs and charts. This project showcases the integration of mobile development, OCR, cloud databases, and data visualization to create a practical financial tool.",
@@ -120,5 +125,72 @@ export const projects: Project[] = [
     journey: [],
     color: "bg-primary/10",
     accent: "bg-primary",
+  },
+  {
+    "type": "experience",
+    "slug": "power-of-branding-event-technical-crew",
+    "featured": false,
+    "title": "Power Of Branding (2024) - Event Technical Crew / AV Support",
+    "description": "Provided technical and AV support for live events, including audio setup, projector configuration, and sound management.",
+    "details": "Worked as part of the Event Technical Crew and AV Support team for Power Of Branding in 2024. Assisted with setup and installation of music and event equipment for live events, including laptops, projectors, microphones, and sound systems. Managed audio balancing and operated EQ Three and EQ Eight for sound optimization during events. Also supported equipment teardown after events and contributed to maintaining smooth technical operations throughout the event lifecycle.",
+    "repoUrl": "https://www.instagram.com/powerofbrandinghh/",
+    "tags": [
+      "AV Support",
+      "Event Technical Crew",
+      "Live Events",
+      "Sound Engineering",
+      "Audio Balancing",
+      "Projectors",
+      "Microphones",
+      "Stage Setup",
+      "Equipment Management",
+      "Technical Support"
+    ],
+    "techStack": [
+      "EQ Three",
+      "EQ Eight",
+      "Audio Mixers",
+      "Projectors",
+      "Microphones",
+      "Sound Systems",
+      "Stage & Cable Management"
+    ],
+    "story": "",
+    "journey": [],
+    "color": "bg-primary/10",
+    "accent": "bg-primary"
+  },
+  {
+    "type": "experience",
+    "slug": "community-club-room-booking-management",
+    "featured": false,
+    "title": "Community Club Room (Dec 2023 - Present) - Booking and Asset Management",
+    "description": "Managed club room bookings, event equipment setup, and asset maintenance while supporting community events and activities.",
+    "details": "Responsible for managing bookings and overseeing assets for the Community Club Room since December 2023. Assisted with the setup and operation of event equipment, including microphones, projectors, sound systems, billiard pools, ping pong tables, and board games. Handled equipment maintenance and ensured facilities were organized and event-ready. Also contributed as an event volunteer, supporting smooth coordination and community engagement activities.",
+    "repoUrl": "",
+    "tags": [
+      "Booking Management",
+      "Asset Management",
+      "Community Events",
+      "Event Support",
+      "Sound System Setup",
+      "Projector Setup",
+      "Facility Operations",
+      "Volunteer Work",
+      "Equipment Maintenance",
+      "Team Coordination"
+    ],
+    "techStack": [
+      "Sound Systems",
+      "Microphones",
+      "Projectors",
+      "Facility Management",
+      "Asset Tracking",
+      "Event Operations"
+    ],
+    "story": "",
+    "journey": [],
+    "color": "bg-primary/10",
+    "accent": "bg-primary"
   },
 ];

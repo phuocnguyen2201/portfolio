@@ -21,7 +21,9 @@ const ProjectsSection = () => {
       </motion.div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((project, idx) => (
+        {projects
+          .filter((project) => project.featured)
+          .map((project, idx) => (
           <motion.article
             key={project.title}
             initial={{ opacity: 0, y: 30 }}

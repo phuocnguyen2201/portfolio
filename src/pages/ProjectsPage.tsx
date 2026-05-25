@@ -106,7 +106,7 @@ const ProjectsPage = () => {
             className="max-w-4xl mx-auto"
           >
             <h1 className="font-heading text-5xl md:text-6xl font-bold mb-4 mt-20">
-              All <span className="text-secondary">Projects</span>
+              All <span className="text-secondary">Projects & Works</span>
             </h1>
             <p className="text-muted-foreground text-lg">
               Explore my complete portfolio of projects spanning mobile apps,
