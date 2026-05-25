@@ -326,7 +326,8 @@ const ProjectsPage = () => {
                       rel="noreferrer"
                       className="brutal-btn flex-1 text-xs border-[2px] px-3 py-1.5 bg-background text-foreground flex items-center justify-center gap-1.5 hover:bg-secondary hover:text-secondary-foreground transition-colors"
                     >
-                      <ExternalLink size={12} /> View Repo
+                      <ExternalLink size={12} />
+                      {project.repoUrl.includes("github.com") ? "View Repo" : "View the project"}
                     </a>
                   </div>
 

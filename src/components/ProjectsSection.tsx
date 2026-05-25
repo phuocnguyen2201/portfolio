@@ -51,7 +51,8 @@ const ProjectsSection = () => {
                 rel="noreferrer"
                 className="brutal-btn flex-1 text-xs border-[2px] px-3 py-1.5 bg-background text-foreground flex items-center justify-center gap-1.5"
               >
-                <ExternalLink size={12} /> View Repo
+                <ExternalLink size={12} />
+                {project.repoUrl.includes("github.com") ? "View Repo" : "View the project"}
               </a>
             </div>
             <div className="flex flex-wrap gap-2">
