@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Play } from "lucide-react";
 import { useEffect } from "react";
 import { projects } from "../data/projects";
+import { isYouTubeShortsUrl, toYouTubeEmbedUrl } from "../lib/youtube";
 import { useTheme } from "../context/useTheme";
 import Footer from "../components/Footer";
 
@@ -14,6 +15,13 @@ const ProjectDetailsPage = () => {
   
   const project = projects.find(p => p.slug === slug);
   const referrer = (location.state as any)?.referrer || "home";
+  const introVideoEmbedUrl = project?.introVideoUrl
+    ? toYouTubeEmbedUrl(project.introVideoUrl)
+    : null;
+  // Shorts are vertical; everything else gets the usual widescreen frame.
+  const introVideoIsVertical = project?.introVideoUrl
+    ? isYouTubeShortsUrl(project.introVideoUrl)
+    : false;
   
   // Scroll to top when component mounts
   useEffect(() => {
@@ -75,7 +83,52 @@ const ProjectDetailsPage = () => {
       {/* Main Content */}
       <section className="w-full px-6 py-10">
         <div className="max-w-4xl mx-auto">
-                      {/* Overview Section */}
+          {/* Introduction Video Section */}
+          {introVideoEmbedUrl && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="brutal-card mb-12"
+            >
+              <h2 className="font-heading text-2xl font-bold mb-2 flex items-center gap-2">
+                <Play size={20} className="text-primary" /> Introduction Vid
+              </h2>
+              <p className="text-muted-foreground text-sm mb-6">
+                A short walkthrough of {project.title} in action.
+              </p>
+
+              <div className={`mx-auto w-full ${introVideoIsVertical ? "max-w-[340px]" : ""}`}>
+                <div
+                  className={`relative border-[3px] border-border bg-muted ${
+                    introVideoIsVertical ? "aspect-[9/16]" : "aspect-video"
+                  }`}
+                  style={{ boxShadow: 'var(--shadow-brutal)' }}
+                >
+                  <iframe
+                    src={introVideoEmbedUrl}
+                    title={`${project.title} introduction video`}
+                    className="absolute inset-0 w-full h-full"
+                    loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+                <a
+                  href={project.introVideoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="brutal-btn text-xs border-[2px] px-3 py-1.5 bg-background text-foreground inline-flex items-center gap-1.5 mt-4"
+                >
+                  <ExternalLink size={12} /> Watch on YouTube
+                </a>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Overview Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

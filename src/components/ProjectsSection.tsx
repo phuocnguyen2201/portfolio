@@ -16,7 +16,7 @@ const ProjectsSection = () => {
           Featured <span className="text-secondary">Projects</span>
         </h2>
         <p className="text-muted-foreground text-lg mb-12 max-w-lg">
-          Four real-world repositories showcasing secure mobile apps, accessibility tooling, E2E testing, and intelligent finance workflows.
+          Five real-world repositories showcasing secure mobile apps, accessibility tooling, E2E testing, intelligent finance workflows, and multiplayer party games.
         </p>
       </motion.div>
 

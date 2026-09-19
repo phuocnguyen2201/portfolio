@@ -10,6 +10,8 @@ export interface Project {
   techStack: string[];
   story: string;
   journey: Array<{ title: string; url: string; description: string }>;
+  /** YouTube watch, youtu.be, or Shorts URL. Renders the "Introduction Vid" section when set. */
+  introVideoUrl?: string;
   color: string;
   accent: string;
 }
@@ -42,6 +44,7 @@ export const projects: Project[] = [
       { title: "Choosing Technologies", url: "", description: "For the front-end I choose Expo React Native enable me to build for both Android and iOS but right now only android is available, back-end will be powered by Supabase they provide database, storage for images and documents, realtime for sending and receiving messages, edge function for Push Notification. For encryption, I will use symmetric-key cryptography, I will implement the encryption and decryption logic using the crypto library in JavaScript like ChaCha20-Poly1305 encryption, Ed25519 key pair generation and ECDH key exchange, expo-secure-store for secure local storage." },
       { title: "Current challenges and future solutions", url: "", description: "The app was first design to be use on a single device, when you use more than one device, It will need to re-design the architecture of key management, since the need for secure key distribution and storage across multiple devices is a significant challenge." },
     ],
+    introVideoUrl: "https://www.youtube.com/shorts/wdZc6gx3-5s",
     color: "bg-primary/10",
     accent: "bg-primary",
   },
@@ -71,6 +74,7 @@ export const projects: Project[] = [
       { title: "Initial Concept", url: "https://en.wikipedia.org/wiki/Color_blindness", description: "The idea was born from the need to streamline the accessibility checking process in our design workflow." },
       { title: "Development", url: "https://stackoverflow.com/questions/635022/calculating-contrasting-colours-in-javascript", description: "I started by learning the Figma Plugin API and setting up a development environment.I dont have to worry much about the solution, there is a lot of existing solutions can find on the internet especially on stackoverflow. I implemented features incrementally, starting with color contrast checks, followed by color blindness simulation, and finally AI-assisted palette generation." },
     ],
+    introVideoUrl: "https://www.youtube.com/watch?v=1rnFwTT6HdE",
     color: "bg-secondary/10",
     accent: "bg-secondary",
   },
@@ -125,6 +129,37 @@ export const projects: Project[] = [
     journey: [],
     color: "bg-primary/10",
     accent: "bg-primary",
+  },
+  {
+    slug: "timewasting",
+    featured: true,
+    type: "web",
+    title: "Time Wasting",
+    description: "A browser party-game app for my friend group \u2014 share a 4-character room code, everyone joins from their phone, scores update live.",
+    details: "Time Wasting (\"Game Night\" in the repo) is a mobile-first multiplayer game app my friends and I built for ourselves. You type your name, pick a game, and either create a room or join one with a 4-character code \u2014 no accounts, no installs, just a link in the group chat. Supabase handles the rooms, players, rounds, and answers, with Realtime pushing every join, guess, and score change to everyone's phone at once. Scoring runs in Postgres functions rather than the client, so nobody can fudge their own points, and a leave_room() function cleans up rooms atomically so two people leaving at the same time can't strand an empty room. It ships to GitHub Pages on every push to main.",
+    repoUrl: "https://github.com/phuocnguyen2201/timewasting",
+    tags: [
+      "React",
+      "Vite",
+      "Supabase",
+      "Realtime",
+      "Multiplayer",
+      "Room Codes",
+      "Tailwind CSS",
+      "Party Games",
+      "Mobile-First",
+      "GitHub Pages",
+    ],
+    techStack: ["React 19", "Vite", "Tailwind CSS v4", "React Router", "Supabase (Postgres + Realtime + RLS)", "Postgres functions for scoring and room cleanup", "GitHub Actions \u2192 GitHub Pages", "oxlint"],
+    story: "My friends and I are spread out these days, and every hangout ended the same way \u2014 all of us in the same room, or the same call, quietly scrolling our own phones. So instead of looking for an app we all agreed on, we just started making the games we wanted to play. Someone drops a 4-character code in the group chat, everyone joins from whatever phone they're holding, and that's the whole setup. The name is honest about what it's for. When we get bored of a game, we add another one.",
+    journey: [
+      { title: "Make joining stupidly easy", url: "", description: "The first rule was that nobody should have to sign up for anything. If joining takes more than ten seconds, half the group loses interest. So it's a name, a 4-character room code, and you're in. The codes skip ambiguous characters like 0/O and 1/I, because reading a code out loud over a bad connection is exactly where that goes wrong." },
+      { title: "Keeping everyone in sync", url: "https://supabase.com/docs/guides/realtime", description: "Supabase Realtime does the heavy lifting: rooms, players, rounds, and answers all live in Postgres, and everyone's screen subscribes to their room. The part I had to think hardest about was trust \u2014 scoring happens in a Postgres function instead of the browser, and rooms expire through a leave_room() function so two people quitting at once can't both assume someone else is still there." },
+      { title: "Two games so far", url: "", description: "Guess the Word came first, with a masking system that reveals letters gradually, and What Is the Object followed. Each game is a self-contained folder with its own config and word list, so adding the next one is mostly writing the game, not rewiring the app." },
+      { title: "Getting it in front of everyone", url: "https://phuocnguyen2201.github.io/timewasting/", description: "It deploys to GitHub Pages through GitHub Actions on every push to main. Two things needed care: the build has to pass the right base path, since a project site is served from /repo-name/ and not the root, and the workflow copies index.html to 404.html so that refreshing on a room URL doesn't hand you a GitHub 404 instead of the app." },
+    ],
+    color: "bg-accent/10",
+    accent: "bg-accent",
   },
   {
     "type": "experience",
