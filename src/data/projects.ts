@@ -12,6 +12,8 @@ export interface Project {
   journey: Array<{ title: string; url: string; description: string }>;
   /** YouTube watch, youtu.be, or Shorts URL. Renders the "Introduction Vid" section when set. */
   introVideoUrl?: string;
+  /** External write-up. Renders a "More about development journey" link under the Journey section. */
+  journeyDocUrl?: string;
   color: string;
   accent: string;
 }
@@ -45,6 +47,7 @@ export const projects: Project[] = [
       { title: "Current challenges and future solutions", url: "", description: "The app was first design to be use on a single device, when you use more than one device, It will need to re-design the architecture of key management, since the need for secure key distribution and storage across multiple devices is a significant challenge." },
     ],
     introVideoUrl: "https://www.youtube.com/shorts/wdZc6gx3-5s",
+    journeyDocUrl: "https://1drv.ms/w/c/9fc74dfd7527badf/IQAe85qGhsMwSr2-7GTH2h0XAUm4nsXpWxilO0iM7Jz0Svo?e=Kz9idj",
     color: "bg-primary/10",
     accent: "bg-primary",
   },
@@ -158,6 +161,7 @@ export const projects: Project[] = [
       { title: "Two games so far", url: "", description: "Guess the Word came first, with a masking system that reveals letters gradually, and What Is the Object followed. Each game is a self-contained folder with its own config and word list, so adding the next one is mostly writing the game, not rewiring the app." },
       { title: "Getting it in front of everyone", url: "https://phuocnguyen2201.github.io/timewasting/", description: "It deploys to GitHub Pages through GitHub Actions on every push to main. Two things needed care: the build has to pass the right base path, since a project site is served from /repo-name/ and not the root, and the workflow copies index.html to 404.html so that refreshing on a room URL doesn't hand you a GitHub 404 instead of the app." },
     ],
+    introVideoUrl: "https://www.youtube.com/watch?v=VCxv5vj1Q2k",
     color: "bg-accent/10",
     accent: "bg-accent",
   },

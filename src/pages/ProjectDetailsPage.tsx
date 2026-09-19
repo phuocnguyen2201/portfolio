@@ -167,7 +167,7 @@ const ProjectDetailsPage = () => {
           </motion.div>
 
           {/* Journey Section */}
-          {(project.story || (project.journey && project.journey.length > 0)) && (
+          {(project.story || project.journeyDocUrl || (project.journey && project.journey.length > 0)) && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -216,6 +216,17 @@ const ProjectDetailsPage = () => {
                     ))}
                   </div>
                 </div>
+              )}
+
+              {project.journeyDocUrl && (
+                <a
+                  href={project.journeyDocUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="brutal-btn text-xs border-[2px] px-3 py-1.5 bg-background text-foreground inline-flex items-center gap-1.5 mt-8"
+                >
+                  <ExternalLink size={12} /> More about development journey
+                </a>
               )}
             </motion.div>
           )}
