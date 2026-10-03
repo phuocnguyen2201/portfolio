@@ -14,6 +14,10 @@ export interface Project {
   introVideoUrl?: string;
   /** External write-up. Renders a "More about development journey" link under the Journey section. */
   journeyDocUrl?: string;
+  /** Deployed app URL. Renders a button next to the repo link. */
+  liveUrl?: string;
+  /** Text for the liveUrl button. Defaults to "Live Demo". */
+  liveLabel?: string;
   color: string;
   accent: string;
 }
@@ -52,6 +56,34 @@ export const projects: Project[] = [
     accent: "bg-primary",
   },
   {
+    slug: "accessibility-scan",
+    featured: true,
+    type: "web",
+    title: "A11y Site Scanner",
+    description: "Scan a whole website for accessibility, SEO, performance and best-practice problems, page by page.",
+    details: "A11y Site Scanner audits an entire website from a single URL. It crawls the site through its links and sitemap while respecting robots.txt, treating www and the bare domain as one site, and checks up to 800 pages. You choose what to check: accessibility against WCAG 2.0, 2.1 and 2.2 (levels A and AA) with severity ratings and fix guidance, nine on-page SEO checks (status, title and meta description length, H1, canonical, lang, viewport, image alt text), performance metrics plus sampled Lighthouse audits for Core Web Vitals, and Lighthouse best practices. Progress updates live and scans can be paused and resumed. The results dashboard shows average scores per category, the most common issues ranked by impact, and the pages that need attention, with search, filters and sorting on both desktop and mobile. Results are private to the account owner, and guests can run one smaller scan per hour.",
+    repoUrl: "https://github.com/phuocnguyen2201/accessibility-scan",
+    liveUrl: "https://accessibility-scan.netlify.app/",
+    introVideoUrl: "https://www.youtube.com/watch?v=RAwaIlzf-SM",
+    tags: [
+      "Accessibility",
+      "WCAG 2.2",
+      "SEO",
+      "Lighthouse",
+      "Web Crawler",
+      "Playwright",
+      "Axe",
+      "Next.js",
+      "Supabase",
+      "Raspberry Pi",
+    ],
+    techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Recharts", "Zod", "Supabase (Auth + Postgres)", "Playwright + @axe-core/playwright", "Lighthouse", "robots-parser + sitemap parsing", "Docker workers on a Raspberry Pi 4", "Netlify"],
+    story: "",
+    journey: [],
+    color: "bg-secondary/10",
+    accent: "bg-secondary",
+  },
+  {
     slug: "accessibility-view",
     featured: true,
     type: "web",
@@ -59,6 +91,8 @@ export const projects: Project[] = [
     description: "A Figma plugin for WCAG contrast checks, color blindness simulation, and AI-assisted palette generation.",
     details: "Accessibility View is a Figma plugin designed to help designers create more inclusive and accessible designs. It provides tools for checking color contrast against WCAG guidelines, simulating various types of color blindness, and generating AI-assisted color palettes that meet accessibility standards. The plugin integrates with the Figma API to analyze design elements in real-time, offering actionable feedback and suggestions for improving accessibility. By incorporating this plugin into their workflow, designers can ensure that their creations are usable by a wider audience, including those with visual impairments.",
     repoUrl: "https://github.com/phuocnguyen2201/accessibility-view",
+    liveUrl: "https://www.figma.com/community/plugin/1521971639933409779/accessibility-view",
+    liveLabel: "Get the Plugin",
     tags: [
       "TypeScript",
       "Figma Plugin",
@@ -110,7 +144,7 @@ export const projects: Project[] = [
   {
     type: "mobile",
     slug: "financial-management",
-    featured: true,
+    featured: false,
     title: "Financial Management",
     description: "A bill scanner and expense tracker using OCR, Firebase, and visual analytics for spending insights.",
     details: "Financial Management is a React Native app that helps users track their expenses by scanning receipts using OCR technology. The app utilizes Tesseract OCR to extract text from receipt images, allowing users to quickly log their expenses without manual entry. Data is stored and synchronized in real-time using Firebase Realtime Database, ensuring that users can access their financial information across devices. The app also features visual analytics powered by Victory Charts, providing users with insights into their spending habits through interactive graphs and charts. This project showcases the integration of mobile development, OCR, cloud databases, and data visualization to create a practical financial tool.",
@@ -135,12 +169,14 @@ export const projects: Project[] = [
   },
   {
     slug: "timewasting",
-    featured: true,
+    featured: false,
     type: "web",
     title: "Time Wasting",
     description: "A browser party-game app for my friend group \u2014 share a 4-character room code, everyone joins from their phone, scores update live.",
     details: "Time Wasting (\"Game Night\" in the repo) is a mobile-first multiplayer game app my friends and I built for ourselves. You type your name, pick a game, and either create a room or join one with a 4-character code \u2014 no accounts, no installs, just a link in the group chat. Supabase handles the rooms, players, rounds, and answers, with Realtime pushing every join, guess, and score change to everyone's phone at once. Scoring runs in Postgres functions rather than the client, so nobody can fudge their own points, and a leave_room() function cleans up rooms atomically so two people leaving at the same time can't strand an empty room. It ships to GitHub Pages on every push to main.",
     repoUrl: "https://github.com/phuocnguyen2201/timewasting",
+    liveUrl: "https://phuocnguyen2201.github.io/timewasting/",
+    liveLabel: "Play the Game",
     tags: [
       "React",
       "Vite",

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 
@@ -35,7 +35,11 @@ const ProjectsSection = () => {
             <div className={`${project.color} h-40 border-b-[3px] border-border -m-6 mb-6 flex items-center justify-center`}>
               <div className={`w-16 h-16 ${project.accent} border-[3px] border-border rotate-12 group-hover:rotate-45 transition-transform duration-300`} />
             </div>
-            <h3 className="font-heading text-xl font-bold mb-2">{project.title}</h3>
+            <h3 className="font-heading text-xl font-bold mb-2">
+              <Link to={`/project/${project.slug}`} state={{ referrer: "home" }} className="hover:text-primary hover:underline underline-offset-4 transition-colors">
+                {project.title}
+              </Link>
+            </h3>
             <p className="text-muted-foreground text-sm mb-6">{project.description}</p>
             <div className="flex gap-3 mb-6">
               <Link
@@ -55,6 +59,16 @@ const ProjectsSection = () => {
                 {project.repoUrl.includes("github.com") ? "View Repo" : "View the project"}
               </a>
             </div>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="brutal-btn w-full text-xs border-[2px] px-3 py-1.5 bg-primary text-primary-foreground flex items-center justify-center gap-1.5 -mt-3 mb-6"
+              >
+                <Globe size={12} /> {project.liveLabel ?? "Live Demo"}
+              </a>
+            )}
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span key={tag} className="tag-badge bg-muted text-foreground">

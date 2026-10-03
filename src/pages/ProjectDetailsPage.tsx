@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Play } from "lucide-react";
+import { ArrowLeft, ExternalLink, Play, Globe } from "lucide-react";
 import { useEffect } from "react";
 import { projects } from "../data/projects";
 import { isYouTubeShortsUrl, toYouTubeEmbedUrl } from "../lib/youtube";
@@ -248,6 +248,16 @@ const ProjectDetailsPage = () => {
             >
               <ExternalLink size={16} /> View on GitHub
             </a>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="brutal-btn text-sm border-[2px] px-6 py-3 bg-background text-foreground inline-flex items-center gap-2 font-semibold ml-3"
+              >
+                <Globe size={16} /> {project.liveLabel ?? "Live Demo"}
+              </a>
+            )}
           </motion.div>
 
 

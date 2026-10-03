@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowRight, X, ChevronDown } from "lucide-react";
+import { ExternalLink, ArrowRight, X, ChevronDown, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { useTheme } from "../context/useTheme";
@@ -306,7 +306,9 @@ const ProjectsPage = () => {
                   </div>
 
                   <h3 className="font-heading text-xl font-bold mb-2">
-                    {project.title}
+                    <Link to={`/project/${project.slug}`} state={{ referrer: "projects" }} className="hover:text-primary hover:underline underline-offset-4 transition-colors">
+                      {project.title}
+                    </Link>
                   </h3>
                   <p className="text-muted-foreground text-sm mb-6 flex-1">
                     {project.description}
@@ -330,6 +332,16 @@ const ProjectsPage = () => {
                       {project.repoUrl.includes("github.com") ? "View Repo" : "View the project"}
                     </a>
                   </div>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="brutal-btn w-full text-xs border-[2px] px-3 py-1.5 bg-primary text-primary-foreground flex items-center justify-center gap-1.5 -mt-3 mb-6"
+                    >
+                      <Globe size={12} /> {project.liveLabel ?? "Live Demo"}
+                    </a>
+                  )}
 
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
