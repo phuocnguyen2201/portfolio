@@ -30,6 +30,13 @@ const certificates = [
     url: "https://openbadgefactory.com/v1/assertion/410e5da47fc3c88e6711d745e010dec5e73c7fee",
     color: "bg-accent",
   },
+  {
+    title: "CCNAv7: Introduction to Networks",
+    issuer: "Cisco Networking Academy",
+    year: "2024",
+    url: "https://1drv.ms/b/c/9fc74dfd7527badf/IQAFg2eEJbKwR6xsMv7lX-D5Aei0ukBgO9-swhfqzqPwnWU?e=i4OoGL",
+    color: "bg-secondary",
+  },
 ];
 
 const CertificatesSection = () => {

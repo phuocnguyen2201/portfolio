@@ -20,6 +20,7 @@ const skills = [
   { "name": "Jest", "category": "Testing", "icon": Terminal },
   { "name": "Robot Framework", "category": "Testing", "icon": Terminal },
   { "name": "Appium", "category": "Testing", "icon": Terminal },
+  { "name": "Maestro", "category": "Testing", "icon": Terminal },
   { "name": "UI/UX Testing", "category": "Testing", "icon": Eye },
   { "name": "Regression Testing", "category": "Testing", "icon": Eye },
   { "name": "Exploratory Testing", "category": "Testing", "icon": Eye },
