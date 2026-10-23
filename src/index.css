@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,7 +17,7 @@
     --popover-foreground: 0 0% 13%;
 
     --primary: 13 76% 61%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 13%;
 
     --secondary: 171 58% 39%;
     --secondary-foreground: 0 0% 100%;
@@ -64,7 +62,7 @@
     --popover-foreground: 50 14% 95%;
 
     --primary: 13 76% 61%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 13%;
 
     --secondary: 171 58% 45%;
     --secondary-foreground: 0 0% 100%;

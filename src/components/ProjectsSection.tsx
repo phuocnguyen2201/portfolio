@@ -47,7 +47,7 @@ const ProjectsSection = () => {
                 state={{ referrer: "home" }}
                 className="brutal-btn flex-1 text-xs border-[2px] px-3 py-1.5 bg-background text-foreground flex items-center justify-center gap-1.5"
               >
-                <ArrowRight size={12} /> Learn More
+                <ArrowRight size={12} /> Learn More<span className="sr-only"> about {project.title}</span>
               </Link>
               <a
                 href={project.repoUrl}

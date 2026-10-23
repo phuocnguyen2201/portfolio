@@ -26,7 +26,7 @@ const ProjectsPage = () => {
   const typeDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.title = "Projects";
+    document.title = "Projects | Bruce's Portfolio";
     window.scrollTo(0, 0);
   }, []);
 
@@ -96,6 +96,7 @@ const ProjectsPage = () => {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
 
+      <main className="flex-1 flex flex-col">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/5 to-background border-b-[3px] border-border">
         <div className="w-full px-6 py-12 md:py-16">
@@ -305,11 +306,11 @@ const ProjectsPage = () => {
                     />
                   </div>
 
-                  <h3 className="font-heading text-xl font-bold mb-2">
+                  <h2 className="font-heading text-xl font-bold mb-2">
                     <Link to={`/project/${project.slug}`} state={{ referrer: "projects" }} className="hover:text-primary hover:underline underline-offset-4 transition-colors">
                       {project.title}
                     </Link>
-                  </h3>
+                  </h2>
                   <p className="text-muted-foreground text-sm mb-6 flex-1">
                     {project.description}
                   </p>
@@ -320,7 +321,7 @@ const ProjectsPage = () => {
                       state={{ referrer: "projects" }}
                       className="brutal-btn flex-1 text-xs border-[2px] px-3 py-1.5 bg-background text-foreground flex items-center justify-center gap-1.5 hover:bg-primary hover:text-primary-foreground transition-colors"
                     >
-                      <ArrowRight size={12} /> Learn More
+                      <ArrowRight size={12} /> Learn More<span className="sr-only"> about {project.title}</span>
                     </Link>
                     <a
                       href={project.repoUrl}
@@ -368,9 +369,9 @@ const ProjectsPage = () => {
               transition={{ duration: 0.5 }}
               className="brutal-card text-center py-16"
             >
-              <h3 className="font-heading text-2xl font-bold mb-4">
+              <h2 className="font-heading text-2xl font-bold mb-4">
                 No projects found
-              </h3>
+              </h2>
               <p className="text-muted-foreground mb-6">
                 Try adjusting your search or filters to find what you're looking
                 for.
@@ -385,6 +386,7 @@ const ProjectsPage = () => {
           )}
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

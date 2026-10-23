@@ -52,35 +52,35 @@ const HowScreenReaderWorksSection = () => (
     </p>
 
     <div className="grid gap-4 md:grid-cols-2 mb-4">
-      <div className="rounded border border-border bg-muted p-6">
+      <div className="rounded border border-border bg-neutral-900 text-neutral-100 p-6">
         <p className="font-semibold mb-3">Role then content</p>
         <p className="text-lg">
-          <span className="font-semibold text-secondary">Role:</span>{' '}
-          <span className="text-secondary">button</span>{' '}
-          <span className="font-semibold text-accent">Content:</span>{' '}
-          <span className="text-accent">Submit</span>
+          <span className="font-semibold text-teal-300">Role:</span>{' '}
+          <span className="text-teal-300">button</span>{' '}
+          <span className="font-semibold text-yellow-300">Content:</span>{' '}
+          <span className="text-yellow-300">Submit</span>
         </p>
         <p className="text-lg mt-4">
-          <span className="font-semibold text-secondary">Role:</span>{' '}
-          <span className="text-secondary">heading level 2</span>{' '}
-          <span className="font-semibold text-accent">Content:</span>{' '}
-          <span className="text-accent">Section Two</span>
+          <span className="font-semibold text-teal-300">Role:</span>{' '}
+          <span className="text-teal-300">heading level 2</span>{' '}
+          <span className="font-semibold text-yellow-300">Content:</span>{' '}
+          <span className="text-yellow-300">Section Two</span>
         </p>
       </div>
 
-      <div className="rounded border border-border bg-muted p-6">
+      <div className="rounded border border-border bg-neutral-900 text-neutral-100 p-6">
         <p className="font-semibold mb-3">Content then role</p>
         <p className="text-lg">
-          <span className="font-semibold text-accent">Content:</span>{' '}
-          <span className="text-accent">Submit</span>{' '}
-          <span className="font-semibold text-secondary">Role:</span>{' '}
-          <span className="text-secondary">button</span>
+          <span className="font-semibold text-yellow-300">Content:</span>{' '}
+          <span className="text-yellow-300">Submit</span>{' '}
+          <span className="font-semibold text-teal-300">Role:</span>{' '}
+          <span className="text-teal-300">button</span>
         </p>
         <p className="text-lg mt-4">
-          <span className="font-semibold text-accent">Content:</span>{' '}
-          <span className="text-accent">Section Two</span>{' '}
-          <span className="font-semibold text-secondary">Role:</span>{' '}
-          <span className="text-secondary">heading level 2</span>
+          <span className="font-semibold text-yellow-300">Content:</span>{' '}
+          <span className="text-yellow-300">Section Two</span>{' '}
+          <span className="font-semibold text-teal-300">Role:</span>{' '}
+          <span className="text-teal-300">heading level 2</span>
         </p>
       </div>
     </div>
@@ -90,31 +90,32 @@ const HowScreenReaderWorksSection = () => (
 const HeadingOrderSection = () => {
   const [activeExample, setActiveExample] = React.useState('good');
 
+  // Example headings are <p> styled as headings, so they don't add a second h1 or break this page's own outline.
   const goodHeadings = (
     <div className="brutal-card p-6 space-y-4">
       <div className="grid gap-3">
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h1 className="font-heading text-2xl font-bold m-0">Main Page Title</h1>
+          <p className="font-heading text-2xl font-bold m-0">Main Page Title</p>
           <code className="text-sm text-muted-foreground">{`<h1>Main Page Title</h1>`}</code>
         </div>
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h2 className="font-heading text-xl font-semibold m-0">Section One</h2>
+          <p className="font-heading text-xl font-semibold m-0">Section One</p>
           <code className="text-sm text-muted-foreground">{`<h2>Section One</h2>`}</code>
         </div>
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h3 className="font-heading text-lg font-medium m-0">Subsection A</h3>
+          <p className="font-heading text-lg font-medium m-0">Subsection A</p>
           <code className="text-sm text-muted-foreground">{`<h3>Subsection A</h3>`}</code>
         </div>
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h2 className="font-heading text-xl font-semibold m-0">Section Two</h2>
+          <p className="font-heading text-xl font-semibold m-0">Section Two</p>
           <code className="text-sm text-muted-foreground">{`<h2>Section Two</h2>`}</code>
         </div>
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h3 className="font-heading text-lg font-medium m-0">Subsection B</h3>
+          <p className="font-heading text-lg font-medium m-0">Subsection B</p>
           <code className="text-sm text-muted-foreground">{`<h3>Subsection B</h3>`}</code>
         </div>
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h4 className="font-heading text-base font-medium m-0">Sub-subsection</h4>
+          <p className="font-heading text-base font-medium m-0">Sub-subsection</p>
           <code className="text-sm text-muted-foreground">{`<h4>Sub-subsection</h4>`}</code>
         </div>
       </div>
@@ -125,15 +126,15 @@ const HeadingOrderSection = () => {
     <div className="brutal-card p-6 space-y-4">
       <div className="grid gap-3">
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h1 className="font-heading text-2xl font-bold m-0">Main Page Title</h1>
+          <p className="font-heading text-2xl font-bold m-0">Main Page Title</p>
           <code className="text-sm text-muted-foreground">{`<h1>Main Page Title</h1>`}</code>
         </div>
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h3 className="font-heading text-lg font-medium m-0">Skipped to H3</h3>
+          <p className="font-heading text-lg font-medium m-0">Skipped to H3</p>
           <code className="text-sm text-muted-foreground">{`<h3>Skipped to H3</h3>`}</code>
         </div>
         <div className="flex items-center justify-between rounded border border-border bg-muted p-3">
-          <h2 className="font-heading text-xl font-semibold m-0">Back to H2 (confusing)</h2>
+          <p className="font-heading text-xl font-semibold m-0">Back to H2 (confusing)</p>
           <code className="text-sm text-muted-foreground">{`<h2>Back to H2 (confusing)</h2>`}</code>
         </div>
       </div>
@@ -143,21 +144,21 @@ const HeadingOrderSection = () => {
   const screenReaderOutput = activeExample === 'good'
     ? (
       <>
-        <span className="text-accent">Screen reader:</span>{' '}
-        <span className="text-accent">Main Page Title</span>, <span className="text-secondary">heading level 1</span>.{' '}
-        <span className="text-accent">Section One</span>, <span className="text-secondary">heading level 2</span>.{' '}
-        <span className="text-accent">Subsection A</span>, <span className="text-secondary">heading level 3</span>.{' '}
-        <span className="text-accent">Section Two</span>, <span className="text-secondary">heading level 2</span>.{' '}
-        <span className="text-accent">Subsection B</span>, <span className="text-secondary">heading level 3</span>.{' '}
-        <span className="text-accent">Sub-subsection</span>, <span className="text-secondary">heading level 4</span>.
+        <span className="text-yellow-300">Screen reader:</span>{' '}
+        <span className="text-yellow-300">Main Page Title</span>, <span className="text-teal-300">heading level 1</span>.{' '}
+        <span className="text-yellow-300">Section One</span>, <span className="text-teal-300">heading level 2</span>.{' '}
+        <span className="text-yellow-300">Subsection A</span>, <span className="text-teal-300">heading level 3</span>.{' '}
+        <span className="text-yellow-300">Section Two</span>, <span className="text-teal-300">heading level 2</span>.{' '}
+        <span className="text-yellow-300">Subsection B</span>, <span className="text-teal-300">heading level 3</span>.{' '}
+        <span className="text-yellow-300">Sub-subsection</span>, <span className="text-teal-300">heading level 4</span>.
       </>
     ) : (
       <>
-        <span className="text-accent">Screen reader:</span>{' '}
-        <span className="text-accent">Main Page Title</span>, <span className="text-secondary">heading level 1</span>.{' '}
-        <span className="text-accent">Skipped to H3</span>, <span className="text-secondary">heading level 3</span>.{' '}
-        <span className="text-accent">Back to H2 (confusing)</span>, <span className="text-secondary">heading level 2</span>.{' '}
-        <span className="text-secondary">(User may be confused by skipped levels)</span>
+        <span className="text-yellow-300">Screen reader:</span>{' '}
+        <span className="text-yellow-300">Main Page Title</span>, <span className="text-teal-300">heading level 1</span>.{' '}
+        <span className="text-yellow-300">Skipped to H3</span>, <span className="text-teal-300">heading level 3</span>.{' '}
+        <span className="text-yellow-300">Back to H2 (confusing)</span>, <span className="text-teal-300">heading level 2</span>.{' '}
+        <span className="text-teal-300">(User may be confused by skipped levels)</span>
       </>
     );
 
@@ -199,7 +200,7 @@ const HeadingOrderSection = () => {
         </div>
       </div>
 
-      <div className="bg-muted p-4 border-[2px] border-border">
+      <div className="bg-neutral-900 text-neutral-100 p-4 border-[2px] border-border">
         <strong>Screen Reader Output:</strong><br />
         <p className="text-lg leading-relaxed">{screenReaderOutput}</p>
       </div>
@@ -309,7 +310,7 @@ const ColorContrastSection = () => {
           ))}
       </div>
 
-      <div className="bg-muted p-4 border-[2px] border-border mt-6">
+      <div className="bg-neutral-900 text-neutral-100 p-4 border-[2px] border-border mt-6">
         <strong>Screen Reader Note:</strong><br />
         Screen readers cannot detect contrast issues. Users with visual impairments may not be able to read low-contrast text.
       </div>
@@ -377,20 +378,20 @@ const TabOrderSection = () => {
   const screenReaderOutput = demoType === 'good'
     ? (
       <>
-        <span className="text-accent">Screen reader focus order:</span>{' '}
-        <span className="text-accent">First name</span>, <span className="text-secondary">edit text</span>.{' '}
-        <span className="text-accent">Last name</span>, <span className="text-secondary">edit text</span>.{' '}
-        <span className="text-accent">Submit</span>, <span className="text-secondary">button</span>.{' '}
-        <span className="text-accent">Back to top</span>, <span className="text-secondary">link</span>.
+        <span className="text-yellow-300">Screen reader focus order:</span>{' '}
+        <span className="text-yellow-300">First name</span>, <span className="text-teal-300">edit text</span>.{' '}
+        <span className="text-yellow-300">Last name</span>, <span className="text-teal-300">edit text</span>.{' '}
+        <span className="text-yellow-300">Submit</span>, <span className="text-teal-300">button</span>.{' '}
+        <span className="text-yellow-300">Back to top</span>, <span className="text-teal-300">link</span>.
       </>
     ) : (
       <>
-        <span className="text-accent">Screen reader focus order:</span>{' '}
-        <span className="text-accent">Last name</span>, <span className="text-secondary">edit text</span>.{' '}
-        <span className="text-accent">Submit</span>, <span className="text-secondary">button</span>.{' '}
-        <span className="text-accent">First name</span>, <span className="text-secondary">edit text</span>.{' '}
-        <span className="text-accent">Back to top</span>, <span className="text-secondary">link</span>.{' '}
-        <span className="text-secondary">(Confusing order due to tabindex values)</span>
+        <span className="text-yellow-300">Screen reader focus order:</span>{' '}
+        <span className="text-yellow-300">Last name</span>, <span className="text-teal-300">edit text</span>.{' '}
+        <span className="text-yellow-300">Submit</span>, <span className="text-teal-300">button</span>.{' '}
+        <span className="text-yellow-300">First name</span>, <span className="text-teal-300">edit text</span>.{' '}
+        <span className="text-yellow-300">Back to top</span>, <span className="text-teal-300">link</span>.{' '}
+        <span className="text-teal-300">(Confusing order due to tabindex values)</span>
       </>
     );
 
@@ -427,7 +428,7 @@ const TabOrderSection = () => {
         {demoType === 'good' ? goodOrder : badOrder}
       </div>
 
-      <div className="bg-muted p-4 border-[2px] border-border">
+      <div className="bg-neutral-900 text-neutral-100 p-4 border-[2px] border-border">
         <strong>Screen Reader Focus Order:</strong><br />
         <p className="text-lg leading-relaxed">{screenReaderOutput}</p>
       </div>
@@ -465,21 +466,21 @@ const ImageDescriptionSection = () => {
   const screenReaderOutput = activeImage === 'informative'
     ? (
       <>
-        <span className="text-accent">Screen reader:</span>{' '}
-        <span className="text-accent">Layered square icon representing stacked content or components</span>,{' '}
-        <span className="text-secondary">image</span>
+        <span className="text-yellow-300">Screen reader:</span>{' '}
+        <span className="text-yellow-300">Layered square icon representing stacked content or components</span>,{' '}
+        <span className="text-teal-300">image</span>
       </>
     ) : activeImage === 'decorative'
     ? (
       <>
-        <span className="text-accent">Screen reader:</span>{' '}
-        <span className="text-secondary">(Image ignored - no announcement)</span>
+        <span className="text-yellow-300">Screen reader:</span>{' '}
+        <span className="text-teal-300">(Image ignored - no announcement)</span>
       </>
     ) : (
       <>
-        <span className="text-accent">Screen reader:</span>{' '}
-        <span className="text-accent">Team Photo</span>, <span className="text-secondary">image</span>{' '}
-        <span className="text-secondary">(Generic announcement, user gets no useful information)</span>
+        <span className="text-yellow-300">Screen reader:</span>{' '}
+        <span className="text-yellow-300">Team Photo</span>, <span className="text-teal-300">image</span>{' '}
+        <span className="text-teal-300">(Generic announcement, user gets no useful information)</span>
       </>
     );
 
@@ -541,7 +542,7 @@ const ImageDescriptionSection = () => {
         </div>
       </div>
 
-      <div className="bg-muted p-4 border-[2px] border-border">
+      <div className="bg-neutral-900 text-neutral-100 p-4 border-[2px] border-border">
         <strong>Screen Reader Output:</strong><br />
         <p className="text-lg leading-relaxed">{screenReaderOutput}</p>
       </div>

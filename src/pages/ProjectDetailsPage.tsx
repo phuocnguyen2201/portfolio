@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Play, Globe } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { projects } from "../data/projects";
 import { isYouTubeShortsUrl, toYouTubeEmbedUrl } from "../lib/youtube";
 import { useTheme } from "../context/useTheme";
@@ -22,18 +22,23 @@ const ProjectDetailsPage = () => {
   const introVideoIsVertical = project?.introVideoUrl
     ? isYouTubeShortsUrl(project.introVideoUrl)
     : false;
-  
+  // The YouTube player loads only after a click: its markup fails axe rules we can't fix, and it sets cookies.
+  const [playingSlug, setPlayingSlug] = useState<string | null>(null);
+
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
   // Update page title
+  // SEO wants titles of 60 characters or fewer; long project names drop the suffix.
+  const fullTitle = project ? `${project.title} | Bruce's Portfolio` : "";
+  const pageTitle = fullTitle.length <= 60 ? fullTitle : project?.title.slice(0, 60);
   useEffect(() => {
-    if (project) {
-      document.title = project.title;
+    if (pageTitle) {
+      document.title = pageTitle;
     }
-  }, [project]);
+  }, [pageTitle]);
 
   const handleGoBack = () => {
     if (referrer === "projects") {
@@ -45,7 +50,7 @@ const ProjectDetailsPage = () => {
 
   if (!project) {
     return (
-      <div className="w-full px-6 py-20 min-h-[80vh] flex items-center justify-center">
+      <main className="w-full px-6 py-20 min-h-[80vh] flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-heading text-3xl font-bold mb-4">Project Not Found</h1>
           <button 
@@ -55,12 +60,13 @@ const ProjectDetailsPage = () => {
             <ArrowLeft size={14} /> Back
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
     <div className="max-h-screen bg-background">
+      <main>
       {/* Header */}
       <div className={`${project.color} border-b-[3px] border-border py-0 md:py-12`}>
         <div className="w-full px-6 py-8">
@@ -106,15 +112,35 @@ const ProjectDetailsPage = () => {
                   }`}
                   style={{ boxShadow: 'var(--shadow-brutal)' }}
                 >
-                  <iframe
-                    src={introVideoEmbedUrl}
-                    title={`${project.title} introduction video`}
-                    className="absolute inset-0 w-full h-full"
-                    loading="lazy"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
+                  {playingSlug === slug ? (
+                    <iframe
+                      src={`${introVideoEmbedUrl}?autoplay=1`}
+                      title={`${project.title} introduction video`}
+                      className="absolute inset-0 w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setPlayingSlug(slug ?? null)}
+                      className="absolute inset-0 w-full h-full group"
+                    >
+                      <img
+                        src={`https://i.ytimg.com/vi/${introVideoEmbedUrl.split("/").pop()}/hqdefault.jpg`}
+                        alt=""
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="bg-primary text-primary-foreground border-[3px] border-border p-4 group-hover:scale-110 transition-transform">
+                          <Play size={28} aria-hidden="true" />
+                          <span className="sr-only">Play {project.title} introduction video</span>
+                        </span>
+                      </span>
+                    </button>
+                  )}
                 </div>
                 <a
                   href={project.introVideoUrl}
@@ -295,6 +321,7 @@ const ProjectDetailsPage = () => {
         </div>
          </div>
       </section>
+      </main>
       <Footer />
     </div>
    
